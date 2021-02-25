@@ -6,7 +6,7 @@ const Main = () => {
         <Container fluid>
             <Row className="align-items-center max-vh">
                 <Col md={4} className="side-menu">
-
+                    
                 </Col>
                 <Col className="main-content">
                     
