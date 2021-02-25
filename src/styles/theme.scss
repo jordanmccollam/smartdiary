@@ -13,14 +13,49 @@ body {
     height: 100vh;
 }
 
-.side-menu {
-    background-color: white;
-    box-shadow: $shadow;
-    border-radius: 15px;
-    height: calc(100% - 60px);
-}
-
 .main-content {
     height: calc(100% - 60px);
     margin: 30px;
 }
+
+.side-menu {
+    height: calc(100% - 60px);
+    border-radius: 15px;
+    background: #fff;
+    padding: 30px;
+    position: relative;
+    margin: 30px;
+  }
+  
+  .side-menu,
+  .side-menu::before,
+  .side-menu::after {
+    /* Styles to distinguish sheets from one another */
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    border: 1px solid #bbb;
+    border-radius: 15px;
+  }
+  
+  .side-menu::before,
+  .side-menu::after {
+    content: "";
+    position: absolute;
+    height: 95%;
+    width: 99%;
+    background-color: #eee;
+  }
+  
+  .side-menu::before {
+    right: 15px;
+    top: 0px;
+    transform: rotate(-2deg);
+    z-index: -1;
+  }
+  
+  .side-menu::after {
+    top: 20px;
+    right: -10px;
+    transform: rotate(1.5deg);
+    z-index: -2;
+    height: 98%;
+  }
