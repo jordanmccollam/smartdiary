@@ -1,0 +1,26 @@
+$light: #f1f2f5;
+
+$shadow-color: #dedfe2;
+$shadow: 5px 5px 5px $shadow-color;
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: $light;
+}
+
+.max-vh {
+    height: 100vh;
+}
+
+.side-menu {
+    background-color: white;
+    box-shadow: $shadow;
+    border-radius: 15px;
+    height: calc(100% - 60px);
+    margin: 30px;
+}
+
+.main-content {
+    height: 100%;
+}
