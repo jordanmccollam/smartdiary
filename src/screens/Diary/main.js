@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import * as Comp from '../../components';
 
 const Main = () => {
     return (
@@ -12,7 +13,7 @@ const Main = () => {
                     </div>
                 </Col>
                 <Col className="main-content">
-                    
+                    <Comp.Diary.NewEntry />
                 </Col>
             </Row>
         </Container>

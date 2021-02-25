@@ -1,5 +1,5 @@
 import Main from './main';
 
 export {
-    Main
+    Main,
 }
