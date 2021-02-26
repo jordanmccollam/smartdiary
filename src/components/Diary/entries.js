@@ -26,7 +26,7 @@ const testEntries = [
 ].sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
 
 const Entries = (props) => {
-    const { collapseAllTrigger } = props;
+    const { collapseAllTrigger, filter } = props;
     const [ dates, setDates ] = useState([]);
 
     useEffect(() => {
@@ -37,9 +37,19 @@ const Entries = (props) => {
         })
     }, [testEntries]);
 
+    const calculateFilter = (date) => {
+        const start = moment(filter.startDate).isBefore(filter.endDate) ? filter.startDate : filter.endDate;
+        const end = moment(filter.startDate).isAfter(filter.endDate) ? filter.startDate : filter.endDate
+        if (moment(date).isSameOrAfter(start) && moment(date).isSameOrBefore(end)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return (
         <div>
-            {dates.map((date, yIndex) => {
+            {dates.filter(d => calculateFilter(d)).map((date, yIndex) => {
                 return (
                     <div key={`year-${yIndex}`}>
                         <h4 className="date-header">{moment(date).format('ll')}</h4>

@@ -229,6 +229,13 @@ button {
     content: none;
 }
 
+.dropdown-menu {
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    box-shadow: $shadow;
+}
+
 // .tooltip {
 //     .tooltip-inner,
 //     {

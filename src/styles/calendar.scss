@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Work+Sans:wght@100;300;400;600&display=swap');
+$themed-font: 'Caveat', cursive;
+$primary-font: 'Work Sans', sans-serif;
+
+$text-color: #787b7f;
+$secondary: #787b7f;
+$light: #f1f2f5;
+$white: #fff;
+$primary: #004288;
+
+$border-color: #bcc0c3;
+$shadow-color: rgba(17, 38, 53, 0.25);
+$shadow: 3px 3px 5px $shadow-color;
+
+@import "~bootstrap/scss/bootstrap";
+@import 'react-date-range/dist/styles.css';
+@import 'react-date-range/dist/theme/default.css';
+
+
+.rdrDayNumber {
+    span::after {
+        background-color: $primary !important;
+    }
+}
+
+.rdrDateDisplayWrapper {
+    background-color: transparent;
+}
+.rdrDateDisplayItem {
+    background-color: transparent;
+    box-shadow: none;
+    border: none !important;
+}

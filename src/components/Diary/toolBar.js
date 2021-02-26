@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, OverlayTrigger, Tooltip, Dropdown } from 'react-bootstrap';
 import * as Diary from '../Diary';
+import Calendar from 'react-calendar';
+import { DateRange } from 'react-date-range';
+import moment from 'moment';
 import { BsPencil, BsChevronUp, BsChevronDown, BsClock, BsChevronBarExpand, BsCalendar } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley, VscFilter } from 'react-icons/vsc';
@@ -9,7 +12,19 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 const toolSize = 24;
 
 const ToolBar = (props) => {
-    const { setCollapseAllTrigger } = props;
+    const { setCollapseAllTrigger, filter, setFilter, initialFilter } = props;
+
+    useEffect(() => {
+        console.log("FILTER", filter);
+    }, [filter])
+
+    const changeFilter = (selection) => {
+        // console.log("changeFilter", selection);
+        setFilter(selection.filter);
+    }
+    const resetFilter = () => {
+        setFilter(initialFilter);
+    }
 
     const tools = [
         {
@@ -18,13 +33,24 @@ const ToolBar = (props) => {
             label: 'Collapse All'
         },
         {
-            icon: <div style={{fontSize: 14}}>{'02/12/test'} <BsCalendar size={toolSize} className="mb-1 ml-2 text-primary"/></div>,
+            icon: 
+                <div style={{fontSize: 14}} className="text-secondary">
+                    {moment(moment(filter.startDate).isBefore(filter.endDate) ? filter.startDate : filter.endDate).format('M/DD/YY')} - {moment(moment(filter.startDate).isAfter(filter.endDate) ? filter.startDate : filter.endDate).format('M/DD/YY')} 
+                    <BsCalendar size={toolSize} className="mb-1 ml-2 text-primary" />
+                </div>,
             label: 'Filter Entries',
             dropdown: [
                 {
-                    label: 'Action',
-                    action: () => console.log("Action")
-                }
+                    label: <DateRange
+                        ranges={[filter]}
+                        onChange={changeFilter}
+                        rangeColors={['#004288']}
+                        // color="#004288"
+                    />
+                },
+                {
+                    label: <Button block variant="white" onClick={resetFilter} >Reset</Button>
+                },
             ]
         },
     ]
@@ -52,7 +78,9 @@ const ToolBar = (props) => {
                                 
                                     <Dropdown.Menu>
                                         {tool.dropdown.map((toolItem, tIndex) => (
-                                            <Dropdown.Item onClick={toolItem.action} key={`tool-item-${tIndex}`}>{toolItem.label}</Dropdown.Item>
+                                            <div key={`tool-item-${tIndex}`} onClick={toolItem.action ? toolItem.action : null}>
+                                                {toolItem.label}
+                                            </div>
                                         ))}
                                     </Dropdown.Menu>
                                 </Dropdown>
