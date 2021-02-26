@@ -3,7 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import * as Comp from '../../components';
 
 const Main = () => {
-    const [ collapsed, setCollapsed ] = useState(false);
+    const [ collapsed, setCollapsed ] = useState(true);
+    const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
 
     return (
         <Container fluid>
@@ -16,8 +17,9 @@ const Main = () => {
                 </Col>
                 <Col className="main-content">
                     <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} />
+                    <Comp.Diary.ToolBar setCollapseAllTrigger={setCollapseAllTrigger} />
                     <div className={collapsed ? 'scrollable-content collapsed px-3' : 'scrollable-content px-3'}>
-                        <Comp.Diary.Entries />
+                        <Comp.Diary.Entries collapseAllTrigger={collapseAllTrigger} />
                     </div>
                 </Col>
             </Row>

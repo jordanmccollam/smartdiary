@@ -32,13 +32,12 @@ body {
 }
 
 .scrollable-content {
-    // height: 368px;
-    height: 53vh;
+    height: 42vh;
     flex: 1;
     overflow: auto;
 }
 .scrollable-content.collapsed {
-    height: 78vh;
+    height: 67vh;
 }
 .collapse-btn:hover {
     cursor: pointer;
@@ -206,4 +205,15 @@ button {
     right: 0px;
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
+}
+
+.card-btn {
+    color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-btn:hover {
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
 }

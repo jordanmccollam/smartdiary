@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import * as Diary from '../Diary';
 import { BsPencil, BsChevronUp, BsChevronDown, BsClock } from 'react-icons/bs';
@@ -8,10 +8,15 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 const Entry = (props) => {
     const {
-        entry
+        entry,
+        collapseAllTrigger
     } = props;
 
     const [ collapsed, setCollapsed ] = useState(true);
+
+    useMemo(() => {
+        setCollapsed(old => !old);
+    }, [collapseAllTrigger])
 
     return (
         <Row>

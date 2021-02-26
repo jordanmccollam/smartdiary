@@ -33,13 +33,7 @@ const testEntries = [
 ]
 
 const Entries = (props) => {
-    const [ years, setYears ] = useState([]);
-
-    // useEffect(() => {
-    //     if (testEntries) {
-    //         testEnt
-    //     }
-    // }, [testEntries])
+    const { collapseAllTrigger } = props;
 
     return (
         <div>
@@ -48,6 +42,7 @@ const Entries = (props) => {
                     <Comp.Diary.Entry 
                         key={`entry-${index}`} 
                         entry={entry}
+                        collapseAllTrigger={collapseAllTrigger}
                     />
                 )
             })} 
