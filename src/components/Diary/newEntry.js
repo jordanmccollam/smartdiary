@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import * as Diary from '../Diary';
-import { BsPencil, BsChevronUp, BsChevronDown } from 'react-icons/bs';
+import { BsPencil } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 const NewEntry = (props) => {
     const { collapsed, setCollapsed } = props;

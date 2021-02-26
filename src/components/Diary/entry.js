@@ -1,10 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import * as Diary from '../Diary';
-import { BsPencil, BsChevronUp, BsChevronDown, BsClock } from 'react-icons/bs';
-import { FaPaperPlane } from 'react-icons/fa';
-import { VscSmiley } from 'react-icons/vsc';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+import { BsClock } from 'react-icons/bs';
 
 const Entry = (props) => {
     const {

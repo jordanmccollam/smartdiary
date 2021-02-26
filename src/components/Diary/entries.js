@@ -1,9 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
 import * as Comp from '../index';
-import { BsPencil } from 'react-icons/bs';
-import { FaPaperPlane } from 'react-icons/fa';
-import { VscSmiley } from 'react-icons/vsc';
 
 const testEntries = [
     {
