@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import * as Comp from '../../components';
 
 const Main = () => {
     const [ collapsed, setCollapsed ] = useState(true);
     const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
+
+    useMemo(() => {
+        setCollapsed(true);
+    }, [collapseAllTrigger])
 
     return (
         <Container fluid>

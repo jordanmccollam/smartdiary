@@ -15,7 +15,7 @@ const Entry = (props) => {
     const [ collapsed, setCollapsed ] = useState(true);
 
     useMemo(() => {
-        setCollapsed(old => !old);
+        setCollapsed(true);
     }, [collapseAllTrigger])
 
     return (

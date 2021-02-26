@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import * as Diary from '../Diary';
-import { BsPencil, BsChevronUp, BsChevronDown, BsClock, BsArrowsCollapse } from 'react-icons/bs';
+import { BsPencil, BsChevronUp, BsChevronDown, BsClock, BsChevronBarExpand } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
-const toolSize = 22;
+const toolSize = 25;
 
 const ToolBar = (props) => {
     const { setCollapseAllTrigger } = props;
 
     const tools = [
         {
-            icon: <BsArrowsCollapse size={toolSize} />,
-            action: () => setCollapseAllTrigger(old => !old)
+            icon: <BsChevronUp size={toolSize} />,
+            action: () => setCollapseAllTrigger(old => !old),
+            label: 'Collapse All'
         },
         {
-            icon: <FaPaperPlane size={toolSize} />,
-            action: () => console.log("Action")
+            icon: <BsChevronUp size={toolSize} />,
+            action: () => setCollapseAllTrigger(old => !old),
+            label: 'Collapse All'
         },
         {
-            icon: <FaPaperPlane size={toolSize} />,
-            action: () => console.log("Action")
+            icon: <BsChevronUp size={toolSize} />,
+            action: () => setCollapseAllTrigger(old => !old),
+            label: 'Collapse All'
         },
         {
-            icon: <FaPaperPlane size={toolSize} />,
-            action: () => console.log("Action")
+            icon: <BsChevronUp size={toolSize} />,
+            action: () => setCollapseAllTrigger(old => !old),
+            label: 'Collapse All'
         },
     ]
 
@@ -35,9 +39,18 @@ const ToolBar = (props) => {
             {tools.map((tool, index) => {
                 return (
                     <Col key={`tool-${index}`} >
-                        <div className="card py-3 card-btn" onClick={tool.action}>
-                            {tool.icon}
-                        </div>
+                        <OverlayTrigger
+                            placement='top'
+                            overlay={
+                                <Tooltip id={`tool-tooltip-${index}`}>
+                                    {tool.label}
+                                </Tooltip>
+                            }
+                        >
+                            <div className="card py-3 card-btn" onClick={tool.action}>
+                                {tool.icon}
+                            </div>
+                        </OverlayTrigger>
                     </Col>
                 )
             })}
