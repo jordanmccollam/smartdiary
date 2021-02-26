@@ -40,6 +40,11 @@ body {
 .scrollable-content.collapsed {
     height: 78vh;
 }
+.collapse-btn:hover {
+    cursor: pointer;
+    transform: scale(1.4);
+    transition: .2s;
+}
 
 .side-menu {
     height: calc(100% - 60px);

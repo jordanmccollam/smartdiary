@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import * as Diary from '../Diary';
 import { BsPencil, BsChevronUp, BsChevronDown, BsClock } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
@@ -11,10 +12,6 @@ const Entry = (props) => {
     } = props;
 
     const [ collapsed, setCollapsed ] = useState(true);
-
-    const toggleCollapse = () => {
-        setCollapsed(!collapsed);
-    }
 
     return (
         <Row>
@@ -28,14 +25,14 @@ const Entry = (props) => {
                                 <div className="entry-content collapsed">
                                     {entry.content}
                                 </div>
-                                <BsChevronUp onClick={toggleCollapse} />
+                                <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                             </div> 
                         </>
                     ) :(
                         <>
                             <div className="entry-header">
                                 <Form.Label>{entry.time} <BsClock/></Form.Label>
-                                <BsChevronDown onClick={toggleCollapse} />
+                                <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                             </div>
                             <div className="entry-content">
                                 {entry.content}
