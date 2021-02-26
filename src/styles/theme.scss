@@ -32,9 +32,13 @@ body {
 }
 
 .scrollable-content {
-    height: 100vh;
+    // height: 368px;
+    height: 53vh;
     flex: 1;
     overflow: auto;
+}
+.scrollable-content.collapsed {
+    height: 78vh;
 }
 
 .side-menu {

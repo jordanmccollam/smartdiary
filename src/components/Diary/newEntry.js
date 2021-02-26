@@ -5,8 +5,8 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
-const NewEntry = () => {
-    const [ collapsed, setCollapsed ] = useState(true);
+const NewEntry = (props) => {
+    const { collapsed, setCollapsed } = props;
 
     const toggleCollapse = () => {
         setCollapsed(!collapsed);

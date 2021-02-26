@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import * as Comp from '../../components';
 
 const Main = () => {
-    
+    const [ collapsed, setCollapsed ] = useState(false);
 
     return (
         <Container fluid>
@@ -15,8 +15,8 @@ const Main = () => {
                     </div>
                 </Col>
                 <Col className="main-content">
-                    <Comp.Diary.NewEntry />
-                    <div className="scrollable-content px-3">
+                    <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} />
+                    <div className={collapsed ? 'scrollable-content collapsed px-3' : 'scrollable-content px-3'}>
                         <Comp.Diary.Entries />
                     </div>
                 </Col>
