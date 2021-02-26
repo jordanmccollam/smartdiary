@@ -21,8 +21,14 @@ const Main = () => {
     return (
         <Container fluid>
             <Row className="max-vh">
-                <Col md={4} className="side-menu">
+                <Col lg={4} className="side-menu d-none d-lg-block">
                     <div className="themed-underline text-center">
+                        <h1>Smart Diary</h1>
+                        <h5>Property of User</h5>
+                    </div>
+                </Col>
+                <Col xs={12} className="d-lg-none">
+                    <div className="themed-underline text-center mt-4">
                         <h1>Smart Diary</h1>
                         <h5>Property of User</h5>
                     </div>

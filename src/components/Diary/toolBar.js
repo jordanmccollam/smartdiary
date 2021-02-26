@@ -33,6 +33,11 @@ const ToolBar = (props) => {
             label: 'Collapse All'
         },
         {
+            icon: <BsChevronUp size={toolSize}/>,
+            action: () => setCollapseAllTrigger(old => !old),
+            label: 'Collapse All'
+        },
+        {
             icon: 
                 <div style={{fontSize: 14}} className="text-secondary">
                     {moment(moment(filter.startDate).isBefore(filter.endDate) ? filter.startDate : filter.endDate).format('M/DD/YY')} - {moment(moment(filter.startDate).isAfter(filter.endDate) ? filter.startDate : filter.endDate).format('M/DD/YY')} 
