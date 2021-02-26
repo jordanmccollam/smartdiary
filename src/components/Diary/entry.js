@@ -18,7 +18,6 @@ const Entry = (props) => {
     return (
         <Row>
             <Col>
-                <h6 className="month-header">{entry.date}</h6>
                 <div className="card">
                     {collapsed ? (
                         <>
