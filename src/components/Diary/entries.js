@@ -42,7 +42,7 @@ const Entries = (props) => {
             {dates.map((date, yIndex) => {
                 return (
                     <div key={`year-${yIndex}`}>
-                        <h4 className="month-header">{moment(date).format('ll')}</h4>
+                        <h4 className="date-header">{moment(date).format('ll')}</h4>
                         {testEntries.filter(e => e.date === date).map((entry, index) => {
                             return (
                                 <Comp.Diary.Entry 

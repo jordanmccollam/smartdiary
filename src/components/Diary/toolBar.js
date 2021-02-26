@@ -44,7 +44,7 @@ const ToolBar = (props) => {
                                 }
                             >
                                 <Dropdown>
-                                    <Dropdown.Toggle DropdownIndicator variant="clear" className="dropdown-card-btn" style={{height: 47, width: '100%'}}>
+                                    <Dropdown.Toggle DropdownIndicator variant="clear" className="dropdown-card-btn" style={{width: '100%'}}>
                                         <div className="card py-2 card-btn" onClick={tool.action}>
                                             {tool.icon}
                                         </div>

@@ -160,7 +160,7 @@ button {
     color: $primary;
 }
 
-.month-header {
+.date-header {
     opacity: .7;
 }
 
@@ -220,6 +220,9 @@ button {
     cursor: pointer;
 }
 
+.dropdown-card-btn {
+    padding: 0px;
+}
 .dropdown-card-btn.dropdown-toggle::after {
     content: none;
 }
