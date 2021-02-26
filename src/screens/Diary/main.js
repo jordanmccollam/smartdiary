@@ -3,6 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import * as Comp from '../../components';
 
 const Main = () => {
+    
+
     return (
         <Container fluid>
             <Row className="align-items-center max-vh">
@@ -14,6 +16,9 @@ const Main = () => {
                 </Col>
                 <Col className="main-content">
                     <Comp.Diary.NewEntry />
+                    <div className="scrollable-content px-3">
+                        <Comp.Diary.Entries />
+                    </div>
                 </Col>
             </Row>
         </Container>
