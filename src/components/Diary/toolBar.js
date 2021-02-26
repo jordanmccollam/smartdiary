@@ -6,7 +6,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
-const toolSize = 25;
+const toolSize = 24;
 
 const ToolBar = (props) => {
     const { setCollapseAllTrigger } = props;
@@ -47,7 +47,7 @@ const ToolBar = (props) => {
                                 </Tooltip>
                             }
                         >
-                            <div className="card py-3 card-btn" onClick={tool.action}>
+                            <div className="card py-2 card-btn" onClick={tool.action}>
                                 {tool.icon}
                             </div>
                         </OverlayTrigger>

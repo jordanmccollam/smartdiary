@@ -25,7 +25,7 @@ const Entry = (props) => {
                 <div className="card">
                     {collapsed ? (
                         <>
-                            <div className="entry-header collapsed">
+                            <div className="entry-header collapsed m-0">
                                 <Form.Label>{entry.time} <BsClock/></Form.Label>
                                 <div className="entry-content collapsed">
                                     {entry.content}

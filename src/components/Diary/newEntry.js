@@ -12,7 +12,7 @@ const NewEntry = (props) => {
     return (
         <Row className="px-3">
             <Col>
-                <div className="card pb-2 pt-3">
+                <div className="card pb-0">
                     {collapsed ? (
                         <>
                             <div className="entry-header collapsed">
@@ -35,7 +35,7 @@ const NewEntry = (props) => {
                                 <Button variant="primary" block className="btn-sm form-btn">Submit <FaPaperPlane/></Button>
                             </div>
                             
-                            <Row>
+                            <Row className="pb-2">
                                 <Col>
                                     <Button block variant="white">Mood <VscSmiley size={20} className="mb-1" /></Button>
                                 </Col>
