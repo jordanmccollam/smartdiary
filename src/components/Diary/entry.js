@@ -21,7 +21,7 @@ const Entry = (props) => {
     return (
         <Row>
             <Col>
-                <h4 className="month-header">{entry.date}</h4>
+                <h6 className="month-header">{entry.date}</h6>
                 <div className="card">
                     {collapsed ? (
                         <>
