@@ -12,7 +12,7 @@ const Main = () => {
 
     return (
         <Container fluid>
-            <Row className="align-items-center max-vh">
+            <Row className="max-vh">
                 <Col md={4} className="side-menu">
                     <div className="themed-underline text-center">
                         <h1>Smart Diary</h1>

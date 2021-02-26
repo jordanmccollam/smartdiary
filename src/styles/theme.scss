@@ -29,16 +29,18 @@ body {
     height: calc(100% - 60px);
     margin: 30px;
     overflow: hidden;
+    .scrollable-content,
+    .scrollable-content.collapsed {
+        overflow: auto;
+    }
+    .scrollable-content {
+        height: calc(100vh - 390px);
+    }
+    .scrollable-content.collapsed {
+        height: calc(100vh - 205px);
+    }
 }
 
-.scrollable-content {
-    height: 42vh;
-    flex: 1;
-    overflow: auto;
-}
-.scrollable-content.collapsed {
-    height: 67vh;
-}
 .collapse-btn:hover {
     cursor: pointer;
     transform: scale(1.4);
