@@ -36,6 +36,18 @@ $dark: #343944;
             background-color: $dark--primary !important;
         }
     }
+    span {
+        .theme--dark & {
+            color: white !important;
+        }
+    }
+}
+.rdrDayPassive {
+    span {
+        .theme--dark & {
+            color: $text-color !important;
+        }
+    }
 }
 
 .rdrCalendarWrapper {
