@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import * as Diary from '../Diary';
-import { BsClock } from 'react-icons/bs';
+import { BsClock, BsTrash, BsPencilSquare } from 'react-icons/bs';
 
 const Entry = (props) => {
     const {
@@ -42,6 +42,10 @@ const Entry = (props) => {
                             </div>
                             <div className="entry-content">
                                 {entry.content}
+                            </div>
+                            <div className="d-flex justify-content-end mt-2">
+                                <Button variant="white" style={{width: 100}}>Edit <BsPencilSquare className="mb-1"/></Button>
+                                <Button variant="white" style={{width: 100}}>Delete <BsTrash/></Button>
                             </div>
                         </>
                     )}
