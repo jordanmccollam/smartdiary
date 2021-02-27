@@ -48,19 +48,17 @@ body {
 }
 
 .side-menu {
-    height: calc(100% - 60px);
-    border-radius: 15px;
+    height: 100%;
     background: #fff;
     padding: 30px;
     position: relative;
-    margin: 30px;
+    border-top-right-radius: 15px;
 }
 .side-menu,
 .side-menu::before,
 .side-menu::after {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
     border: 1px solid #bbb;
-    border-radius: 15px;
 }
 .side-menu::before,
 .side-menu::after {
@@ -69,19 +67,19 @@ body {
     height: 95%;
     width: 99%;
     background-color: #eee;
+    border-radius: 15px;
 }
 .side-menu::before {
-    right: 15px;
-    top: 0px;
-    transform: rotate(-2deg);
+    right: -8px;
+    top: 5px;
+    transform: rotate(1deg);
     z-index: -1;
 }
 .side-menu::after {
     top: 20px;
-    right: -10px;
+    right: -12px;
     transform: rotate(1.5deg);
     z-index: -2;
-    height: 98%;
 }
 
 h1, h2, h3, h4, h5, h6 {

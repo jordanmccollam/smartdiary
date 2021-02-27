@@ -21,7 +21,7 @@ const Main = () => {
     return (
         <Container fluid>
             <Row className="max-vh">
-                <Col lg={4} className="side-menu d-none d-lg-block">
+                <Col lg={3} className="side-menu d-none d-lg-block">
                     <div className="themed-underline text-center">
                         <h1>Smart Diary</h1>
                         <h5>Property of User</h5>
