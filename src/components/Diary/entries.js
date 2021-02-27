@@ -26,7 +26,11 @@ const testEntries = [
 ].sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
 
 const Entries = (props) => {
-    const { collapseAllTrigger, filter } = props;
+    const { 
+        collapseAllTrigger, 
+        filter,
+        expandAllTrigger
+    } = props;
     const [ dates, setDates ] = useState([]);
 
     useEffect(() => {
@@ -59,6 +63,7 @@ const Entries = (props) => {
                                     key={`entry-${index}`}
                                     entry={entry}
                                     collapseAllTrigger={collapseAllTrigger}
+                                    expandAllTrigger={expandAllTrigger}
                                 />
                             )
                         })}

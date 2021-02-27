@@ -12,6 +12,7 @@ const initialFilter = {
 const Main = () => {
     const [ collapsed, setCollapsed ] = useState(true);
     const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
+    const [ expandAllTrigger, setExpandAllTrigger ] = useState(false);
     const [ filter, setFilter ] = useState(initialFilter);
 
     useMemo(() => {
@@ -37,6 +38,7 @@ const Main = () => {
                     <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} />
                     <Comp.Diary.ToolBar 
                         setCollapseAllTrigger={setCollapseAllTrigger} 
+                        setExpandAllTrigger={setExpandAllTrigger} 
                         filter={filter} 
                         setFilter={setFilter} 
                         initialFilter={initialFilter}
@@ -44,6 +46,7 @@ const Main = () => {
                     <div className={collapsed ? 'scrollable-content collapsed px-3' : 'scrollable-content px-3'}>
                         <Comp.Diary.Entries 
                             collapseAllTrigger={collapseAllTrigger} 
+                            expandAllTrigger={expandAllTrigger}
                             filter={filter}
                         />
                     </div>

@@ -6,7 +6,8 @@ import { BsClock } from 'react-icons/bs';
 const Entry = (props) => {
     const {
         entry,
-        collapseAllTrigger
+        collapseAllTrigger,
+        expandAllTrigger
     } = props;
 
     const [ collapsed, setCollapsed ] = useState(true);
@@ -14,6 +15,10 @@ const Entry = (props) => {
     useMemo(() => {
         setCollapsed(true);
     }, [collapseAllTrigger])
+
+    useMemo(() => {
+        setCollapsed(false);
+    }, [expandAllTrigger])
 
     return (
         <Row>

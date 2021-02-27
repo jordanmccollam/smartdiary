@@ -12,7 +12,13 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 const toolSize = 24;
 
 const ToolBar = (props) => {
-    const { setCollapseAllTrigger, filter, setFilter, initialFilter } = props;
+    const { 
+        setCollapseAllTrigger, 
+        setExpandAllTrigger, 
+        filter, 
+        setFilter, 
+        initialFilter 
+    } = props;
 
     useEffect(() => {
         console.log("FILTER", filter);
@@ -30,12 +36,14 @@ const ToolBar = (props) => {
         {
             icon: <BsChevronUp size={toolSize}/>,
             action: () => setCollapseAllTrigger(old => !old),
-            label: 'Collapse All'
+            label: 'Collapse All',
+            size: 3
         },
         {
-            icon: <BsChevronUp size={toolSize}/>,
-            action: () => setCollapseAllTrigger(old => !old),
-            label: 'Collapse All'
+            icon: <BsChevronDown size={toolSize}/>,
+            action: () => setExpandAllTrigger(old => !old),
+            label: 'Expand All',
+            size: 3
         },
         {
             icon: 
@@ -56,7 +64,8 @@ const ToolBar = (props) => {
                 {
                     label: <Button block variant="white" onClick={resetFilter} >Reset</Button>
                 },
-            ]
+            ],
+            size: null
         },
     ]
 
@@ -65,7 +74,7 @@ const ToolBar = (props) => {
             {tools.map((tool, index) => {
                 if (tool.dropdown) {
                     return (
-                        <Col key={`tool-${index}`} >
+                        <Col lg={tool.size} key={`tool-${index}`} >
                             <OverlayTrigger
                                 placement='top'
                                 overlay={
@@ -95,7 +104,7 @@ const ToolBar = (props) => {
                 }
                 else if (tool.action) {
                     return (
-                        <Col key={`tool-${index}`} >
+                        <Col lg={tool.size} key={`tool-${index}`} >
                             <OverlayTrigger
                                 placement='top'
                                 overlay={
