@@ -2,23 +2,42 @@
 $themed-font: 'Caveat', cursive;
 $primary-font: 'Work Sans', sans-serif;
 
+// LIGHT
 $text-color: #787b7f;
 $secondary: #787b7f;
 $light: #f1f2f5;
 $white: #fff;
 $primary: #004288;
-
 $border-color: #bcc0c3;
 $shadow-color: rgba(17, 38, 53, 0.25);
 $shadow: 3px 3px 5px $shadow-color;
 
+// DARK
+$dark--text-color: #bcc0c3;
+$dark--secondary: #bcc0c3;
+$dark--light: #272c38;
+$dark--white: #fff;
+$dark--primary: #cb6d56;
+$dark--primary-hover: #aa5c48;
+$dark--border-color: #bcc0c3;
+$dark--shadow-color: #2b2f38;
+$dark--shadow: 3px 3px 5px $dark--shadow-color;
+$dark: #343944;
+
 @import "~bootstrap/scss/bootstrap";
 
-body {
+.App {
+    font-weight: 300;
+    position: relative;
+    z-index: 0;
+}
+.theme--light {
     background-color: $light;
     color: $text-color;
-    font-weight: 300;
-    // font-family: $primary-font;
+}
+.theme--dark {
+    background-color: $dark--light !important;
+    color: $dark--text-color !important;
 }
 
 .max-vh {
@@ -49,16 +68,22 @@ body {
 
 .side-menu {
     height: 100%;
-    background: #fff;
+    background: $white;
     padding: 30px;
     position: relative;
     border-top-right-radius: 15px;
+    .theme--dark & {
+        background: $dark;
+    }
 }
 .side-menu,
 .side-menu::before,
 .side-menu::after {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
     border: 1px solid #bbb;
+    .theme--dark & {
+        border: 1px solid #262931;
+    }
 }
 .side-menu::before,
 .side-menu::after {
@@ -68,6 +93,10 @@ body {
     width: 99%;
     background-color: #eee;
     border-radius: 15px;
+}
+.theme--dark .side-menu::before,
+.theme--dark .side-menu::after {
+    background-color: $dark--shadow-color !important;
 }
 .side-menu::before {
     right: -8px;
@@ -86,11 +115,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $themed-font;
     color: $primary;
     text-shadow: 1px 1px $shadow-color;
+    .theme--dark & {
+        color: $dark--primary;
+        text-shadow: 1px 1px $dark--shadow-color;
+    }
 }
 
 .themed-underline {
     border-bottom: 1px solid $text-color;
     position: relative;
+    .theme--dark & {
+        border-bottom: 1px solid $dark--text-color;
+    }
 }
 .themed-underline::before {
     content: "";
@@ -101,6 +137,9 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid $primary;
     transform: rotate(0.5deg);
     z-index: 1;
+    .theme--dark & {
+        border-bottom: 1px solid $dark--primary;
+    }
 }
 .themed-underline::after {
     content: "";
@@ -110,6 +149,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     border-bottom: 1px solid $text-color;
     transform: rotate(-0.3deg);
+    .theme--dark & {
+        border-bottom: 1px solid $dark--text-color;
+    }
 }
 
 .card {
@@ -122,6 +164,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px 25px 15px 25px;
     font-size: 18px;
     margin-bottom: 15px;
+    .theme--dark & {
+        background-color: $dark;
+    }
 }
 
 textarea:focus, button:focus, input:focus {
@@ -135,6 +180,10 @@ textarea, input {
     border-top-right-radius: 15px !important;
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
+    .theme--dark & {
+        background-color: $dark--light !important;
+        color: #ebebeb !important;
+    }
 }
 input {
     border-radius: 15px !important;
@@ -154,10 +203,17 @@ button {
 
 .btn-white {
     color: $primary;
+    .theme--dark & {
+        color: $dark--primary;
+    }
 }
 .btn-white:hover {
     background-color: $light;
     color: $primary;
+    .theme--dark & {
+        color: $dark--primary;
+        background-color: $dark--light;
+    }
 }
 
 .date-header {
@@ -174,6 +230,9 @@ button {
     border-bottom: 1px solid $border-color;
     margin-bottom: 15px;
     align-items: center;
+    .theme--dark & {
+        border-bottom: 1px solid $dark--border-color;
+    }
 }
 
 .entry-header.collapsed {
@@ -182,6 +241,9 @@ button {
 
 .entry-content {
     color: #4a4c4e;
+    .theme--dark & {
+        color: #ebebeb;
+    }
 }
 
 .entry-content.collapsed {
@@ -194,6 +256,10 @@ button {
 
 .border-bottom {
     border-color: $border-color;
+    .theme--dark & {
+        border-bottom: 1px solid $dark--border-color;
+    }
+    
 }
 
 .collapsed-new-input {
@@ -214,10 +280,19 @@ button {
     justify-content: center;
     align-items: center;
     height: 45px;
+    .theme--dark & {
+        color: $dark--primary;
+    }
+}
+.theme--dark.card-btn:hover {
+    background-color: #2f343f;
 }
 .card-btn:hover {
     background-color: rgb(245, 245, 245);
     cursor: pointer;
+    .theme--dark & {
+        background-color: #2f343f;
+    }
 }
 
 .dropdown-card-btn {
@@ -232,6 +307,28 @@ button {
     border: none;
     padding: 10px;
     box-shadow: $shadow;
+    .theme--dark & {
+        box-shadow: $dark--shadow;
+        background: $dark !important;
+    }
+}
+
+.text-primary {
+    .theme--dark & {
+        color: $dark--primary !important;
+    }
+}
+
+.btn-primary {
+    .theme--dark & {
+        background-color: $dark--primary !important;
+        border-color: $dark--primary !important;
+    }
+}
+.btn-primary:hover {
+    .theme--dark & {
+        background-color: $dark--primary-hover !important;
+    }
 }
 
 // .tooltip {

@@ -17,7 +17,8 @@ const ToolBar = (props) => {
         setExpandAllTrigger, 
         filter, 
         setFilter, 
-        initialFilter 
+        initialFilter,
+        theme
     } = props;
 
     useEffect(() => {
@@ -57,7 +58,7 @@ const ToolBar = (props) => {
                     label: <DateRange
                         ranges={[filter]}
                         onChange={changeFilter}
-                        rangeColors={['#004288']}
+                        rangeColors={[theme === 'theme--light' ? '#004288' : '#cb6d56']}
                         // color="#004288"
                     />
                 },

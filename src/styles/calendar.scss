@@ -2,15 +2,27 @@
 $themed-font: 'Caveat', cursive;
 $primary-font: 'Work Sans', sans-serif;
 
+// LIGHT
 $text-color: #787b7f;
 $secondary: #787b7f;
 $light: #f1f2f5;
 $white: #fff;
 $primary: #004288;
-
 $border-color: #bcc0c3;
 $shadow-color: rgba(17, 38, 53, 0.25);
 $shadow: 3px 3px 5px $shadow-color;
+
+// DARK
+$dark--text-color: #bcc0c3;
+$dark--secondary: #bcc0c3;
+$dark--light: #272c38;
+$dark--white: #fff;
+$dark--primary: #cb6d56;
+$dark--primary-hover: #aa5c48;
+$dark--border-color: #bcc0c3;
+$dark--shadow-color: rgba(182, 190, 196, 0.25);
+$dark--shadow: 3px 3px 5px $shadow-color;
+$dark: #343944;
 
 @import "~bootstrap/scss/bootstrap";
 @import 'react-date-range/dist/styles.css';
@@ -20,14 +32,60 @@ $shadow: 3px 3px 5px $shadow-color;
 .rdrDayNumber {
     span::after {
         background-color: $primary !important;
+        .theme--dark & {
+            background-color: $dark--primary !important;
+        }
+    }
+}
+
+.rdrCalendarWrapper {
+    background-color: transparent;
+    .theme--dark & {
+        background: $dark !important;
     }
 }
 
 .rdrDateDisplayWrapper {
     background-color: transparent;
+    .theme--dark & {
+        background: $dark !important;
+    }
 }
 .rdrDateDisplayItem {
     background-color: transparent;
     box-shadow: none;
     border: none !important;
+}
+
+.rdrYearPicker,
+.rdrMonthPicker {
+    select {
+        .theme--dark & {
+            color: white !important;
+            select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                text-indent: 1px;
+                text-overflow: '';
+            }
+        }
+    }
+}
+
+.rdrNextButton,
+.rdrNextPrevButton {
+    .theme--dark & {
+        background: $dark--primary !important;
+    }
+}
+
+.rdrNextPrevButton i {
+    .theme--dark & {
+        border-color: transparent $light transparent transparent !important;
+    }
+}
+.rdrNextButton i {
+    .theme--dark & {
+        border-color: transparent transparent transparent $light !important;
+    }
 }
