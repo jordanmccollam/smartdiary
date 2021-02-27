@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Form, Button, Dropdown } from 'react-bootstrap';
 import * as Diary from '../Diary';
 import moment from 'moment';
+import apis from '../../api/index';
 import { Calendar } from 'react-date-range';
 import { BsPencil } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
@@ -12,6 +13,7 @@ const dateFormat = 'M/DD/YY';
 const NewEntry = (props) => {
     const { collapsed, setCollapsed } = props;
     const [ date, setDate ] = useState(moment(new Date()).format(dateFormat));
+    const [ content, setContent ] = useState('');
 
     const changeDate = (_date) => {
         console.log("changeDate", _date);
@@ -19,6 +21,25 @@ const NewEntry = (props) => {
     }
     const resetDate = () => {
         setDate(moment(new Date()).format(dateFormat));
+    }
+
+    const changeContent = (event) => {
+        setContent(event.target.value);
+    }
+
+    const submit = () => {
+        const toSubmit = {
+            date,
+            content,
+            time: moment(new Date()).format('h:mma')
+        }
+        console.log("submit:: toSubmit", toSubmit);
+        apis.createEntry(toSubmit).then(res => {
+            const output = res.data.output;
+            console.log("submit:: output", output);
+        }).catch(e => {
+            console.error("submit", e);
+        })
     }
 
     return (
@@ -30,8 +51,8 @@ const NewEntry = (props) => {
                             <div className="entry-header collapsed">
                                 <Form.Label>New Entry <BsPencil/></Form.Label>
                                 <div className="collapsed-new-input">
-                                    <Form.Control type="text" />
-                                    <Button className="input-btn" variant="primary"><FaPaperPlane/></Button>
+                                    <Form.Control type="text" value={content} onChange={changeContent} />
+                                    <Button onClick={submit} className="input-btn" variant="primary"><FaPaperPlane/></Button>
                                 </div>
                                 <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                             </div>
@@ -59,8 +80,8 @@ const NewEntry = (props) => {
                                 </div>
                             </div>
                             <div className="new-entry-content" >
-                                <Form.Control as="textarea" rows={3} />
-                                <Button variant="primary" block className="btn-sm form-btn">Submit <FaPaperPlane/></Button>
+                                <Form.Control as="textarea" rows={3} value={content} onChange={changeContent} />
+                                <Button onClick={submit} variant="primary" block className="btn-sm form-btn">Submit <FaPaperPlane/></Button>
                             </div>
                             
                             <Row className="pb-2">

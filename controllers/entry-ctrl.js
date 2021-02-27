@@ -19,7 +19,7 @@ createEntry = (req, res) => {
     entry.save().then(() => {
         return res.status(201).json({
             success: true,
-            id: entry._id,
+            output: entry,
             message: 'Entry created!',
         })
     }).catch(error => {
@@ -80,7 +80,7 @@ deleteEntry = async (req, res) => {
                 .json({ success: false, error: `Entry not found` })
         }
 
-        return res.status(200).json({ success: true, data: entry })
+        return res.status(200).json({ success: true, output: entry })
     }).catch(err => console.log(err))
 }
 
@@ -95,7 +95,7 @@ getEntry = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Entry not found` })
         }
-        return res.status(200).json({ success: true, data: entry })
+        return res.status(200).json({ success: true, output: entry })
     }).catch(err => console.log(err))
 }
 
@@ -109,7 +109,7 @@ getEntries = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Entry not found` })
         }
-        return res.status(200).json({ success: true, data: entries })
+        return res.status(200).json({ success: true, output: entries })
     }).catch(err => console.log(err))
 }
 

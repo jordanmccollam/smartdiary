@@ -27,7 +27,7 @@ const testEntries = [
         time: '3:00pm',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
-].sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
+];
 
 const testing = false;
 
@@ -50,14 +50,20 @@ const Main = (props) => {
             setEntries(testEntries);
         } else {
             apis.getEntries().then(res => {
-                console.log("getEntries:: res", res.data);
-                const _entries = res.data.data;
-                setEntries(_entries.sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm')));
+                console.log("getEntries:: output", res.data.output);
+                const _entries = res.data.output;
+                setEntries(_entries);
             }).catch(e => {
                 console.error("getEntries", e);
             })
         }
     }, [])
+
+    useMemo(() => {
+        if (entries && entries.length > 0) {
+            entries.sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
+        }
+    }, [entries])
 
     useMemo(() => {
         setCollapsed(true);
@@ -86,7 +92,7 @@ const Main = (props) => {
                     </div>
                 </Col>
                 <Col className="main-content">
-                    <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} />
+                    <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} setEntries={setEntries} />
                     <Comp.Diary.ToolBar 
                         setCollapseAllTrigger={setCollapseAllTrigger} 
                         setExpandAllTrigger={setExpandAllTrigger} 
