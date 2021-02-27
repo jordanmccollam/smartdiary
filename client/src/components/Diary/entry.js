@@ -13,12 +13,12 @@ const Entry = (props) => {
     const [ collapsed, setCollapsed ] = useState(true);
 
     useMemo(() => {
-        setCollapsed(true);
-    }, [collapseAllTrigger])
-
-    useMemo(() => {
         setCollapsed(false);
     }, [expandAllTrigger])
+
+    useMemo(() => {
+        setCollapsed(true);
+    }, [collapseAllTrigger])
 
     return (
         <Row>

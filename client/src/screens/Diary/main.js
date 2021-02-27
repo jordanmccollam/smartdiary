@@ -1,9 +1,35 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import * as Comp from '../../components';
 import moment from 'moment';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
+import apis from '../../api';
+
+const testEntries = [
+    {
+        date: '12/08/2020',
+        time: '6:45pm',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    },
+    {
+        date: '11/17/2019',
+        time: '11:30am',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    },
+    {
+        date: '12/08/2020',
+        time: '7:13pm',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    },
+    {
+        date: '10/08/2020',
+        time: '3:00pm',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    },
+].sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
+
+const testing = false;
 
 const initialFilter = {
     startDate: new Date(),
@@ -17,6 +43,21 @@ const Main = (props) => {
     const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
     const [ expandAllTrigger, setExpandAllTrigger ] = useState(false);
     const [ filter, setFilter ] = useState(initialFilter);
+    const [ entries, setEntries ] = useState([]);
+
+    useEffect(() => {
+        if (testing) {
+            setEntries(testEntries);
+        } else {
+            apis.getEntries().then(res => {
+                console.log("getEntries:: res", res.data);
+                const _entries = res.data.data;
+                setEntries(_entries.sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm')));
+            }).catch(e => {
+                console.error("getEntries", e);
+            })
+        }
+    }, [])
 
     useMemo(() => {
         setCollapsed(true);
@@ -59,6 +100,7 @@ const Main = (props) => {
                             collapseAllTrigger={collapseAllTrigger} 
                             expandAllTrigger={expandAllTrigger}
                             filter={filter}
+                            entries={entries}
                         />
                     </div>
                 </Col>
