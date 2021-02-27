@@ -92,7 +92,7 @@ const Main = (props) => {
                     </div>
                 </Col>
                 <Col className="main-content">
-                    <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} setEntries={setEntries} />
+                    <Comp.Diary.NewEntry collapsed={collapsed} setCollapsed={setCollapsed} setEntries={setEntries} theme={theme} />
                     <Comp.Diary.ToolBar 
                         setCollapseAllTrigger={setCollapseAllTrigger} 
                         setExpandAllTrigger={setExpandAllTrigger} 

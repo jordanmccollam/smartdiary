@@ -11,7 +11,7 @@ import { VscSmiley } from 'react-icons/vsc';
 const dateFormat = 'M/DD/YY';
 
 const NewEntry = (props) => {
-    const { collapsed, setCollapsed } = props;
+    const { collapsed, setCollapsed, theme } = props;
     const [ date, setDate ] = useState(moment(new Date()).format(dateFormat));
     const [ content, setContent ] = useState('');
 
@@ -71,7 +71,7 @@ const NewEntry = (props) => {
                                             <Calendar 
                                                 value={new Date(date)}
                                                 onChange={changeDate}
-                                                color={'red'}
+                                                color={theme === 'theme--light' ? '#004288' : '#cb6d56'}
                                             />
                                             <Button block variant="white" onClick={resetDate} >Reset</Button>
                                         </Dropdown.Menu>
