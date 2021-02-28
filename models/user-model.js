@@ -5,7 +5,8 @@ const User = new Schema(
     {
         email: { type: String, required: true, unique: true },
         theme: { type: String, required: true },
-        entries: [{ type: Schema.Types.ObjectId, ref: "entries" }]
+        entries: [{ type: Schema.Types.ObjectId, ref: "entries" }],
+        moods: [{ type: Schema.Types.ObjectId, ref: "moods" }]
     },
     { timestamps: true },
 );

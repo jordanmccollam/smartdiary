@@ -128,7 +128,7 @@ const cells = [
 
 
 const Mood = (props) => {
-    const { toggleMoodMeter } = props;
+    const { toggleMoodMeter, submit } = props;
     const [ mood, setMood ] = useState(null);
 
     const selectCell = (cell) => {
@@ -147,6 +147,12 @@ const Mood = (props) => {
             // console.error("renderCellLabel", e);
             return (<div className="cell-label">-</div>)
         }
+    }
+
+    const onSubmit = () => {
+        submit(mood);
+        setMood(null);
+        toggleMoodMeter();
     }
 
     return (
@@ -193,7 +199,7 @@ const Mood = (props) => {
                             {renderCellLabel(mood.value.y - 1, mood.value.x + 1)}
                         </div>
 
-                        <Button onClick={toggleMoodMeter} variant="primary" className="mt-4 px-5">Submit <FaPaperPlane/></Button>
+                        <Button onClick={onSubmit} variant="primary" className="mt-4 px-5">Submit <FaPaperPlane/></Button>
 
                     </div>
                 )}

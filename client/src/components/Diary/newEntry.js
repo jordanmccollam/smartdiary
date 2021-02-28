@@ -52,6 +52,27 @@ const NewEntry = (props) => {
         setContent('');
     }
 
+    const submitMood = (mood) => {
+        const toSubmit = {
+            date,
+            time: moment(new Date()).format('h:mma'),
+            user: user._id,
+            label: mood.label,
+            energy: mood.value.y,
+            pleasantness: mood.value.x
+        }
+        console.log("submitMood:: toSubmit", toSubmit);
+        apis.createMood(toSubmit).then(res => {
+            const output = res.data.output;
+            console.log("submitMood:: output", output);
+            // setMoods(old => [...old, output]);
+        }).catch(e => {
+            console.error("submitMood", e);
+        })
+        setDate(moment(new Date()).format(dateFormat));
+        setContent('');
+    }
+
     return (
         <Row className="px-3">
             <Col>
@@ -89,7 +110,7 @@ const NewEntry = (props) => {
                                     <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                                 </div>
                             </div>
-                            {moodMeter ? <Mood toggleMoodMeter={toggleMoodMeter} /> : (
+                            {moodMeter ? <Mood toggleMoodMeter={toggleMoodMeter} submit={submitMood} /> : (
                                 <>
                                     <div className="new-entry-content" >
                                         <Form.Control as="textarea" rows={3} value={content} onChange={changeContent} />

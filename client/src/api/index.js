@@ -11,6 +11,13 @@ export const updateEntry = (id, payload) => api.put(`/entry/${id}`, payload);
 export const deleteEntry = id => api.delete(`/entry/${id}`);
 export const getEntry = id => api.get(`/entry/${id}`);
 
+// MOODS
+export const createMood = payload => api.post(`/mood`, payload);
+export const getMoods = () => api.get(`/mood`);
+export const updateMood = (id, payload) => api.put(`/mood/${id}`, payload);
+export const deleteMood = id => api.delete(`/mood/${id}`);
+export const getMood = id => api.get(`/mood/${id}`);
+
 // USERS
 export const getUser = email => api.get(`/user/${email}`);
 export const createUser = payload => api.post(`/user`, payload);
@@ -22,6 +29,11 @@ const apis = {
     updateEntry,
     deleteEntry,
     getEntry,
+    createMood,
+    getMoods,
+    updateMood,
+    deleteMood,
+    getMood,
     getUser,
     createUser,
     updateUser
