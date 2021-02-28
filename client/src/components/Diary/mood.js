@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { FaPaperPlane } from 'react-icons/fa';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 const cells = [
     [
@@ -150,10 +151,10 @@ const Mood = (props) => {
 
     return (
         <Row className="pb-2">
-            <Col lg={'auto'} xl={5}>
+            <Col lg={'auto'} xl={5} className="mood-meter-container">
                 {cells.map((row, rIndex) => {
                     return (
-                        <div className="mood-row" key={`mood-row-${rIndex}`}>
+                        <div className="mood-row pl-2" key={`mood-row-${rIndex}`}>
                             {row.map((cell, cIndex) => {
                                 return (
                                     <div 
@@ -167,6 +168,8 @@ const Mood = (props) => {
                         </div>
                     )
                 })}
+                <h5 className="text-center" ><BsArrowLeft/> Pleasantness <BsArrowRight/></h5>
+                <h5 className="text-center energy-label" ><BsArrowLeft/> Energy <BsArrowRight/></h5>
             </Col>
 
             <Col className="text-center d-flex flex-column justify-content-center">

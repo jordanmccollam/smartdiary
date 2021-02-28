@@ -60,3 +60,14 @@ $dark: #343944;
 .mood-label:hover {
     cursor: pointer;
 }
+
+.mood-meter-container {
+    position: relative;
+    .energy-label {
+        position: absolute;
+        top: calc(50% - 30px);
+        left: -38px;
+        transform: rotate(-90deg);
+    }
+}
+
