@@ -14,6 +14,7 @@ export const getEntry = id => api.get(`/entry/${id}`);
 // USERS
 export const getUser = email => api.get(`/user/${email}`);
 export const createUser = payload => api.post(`/user`, payload);
+export const updateUser = (id, payload) => api.put(`/user/${id}`, payload);
 
 const apis = {
     createEntry,
@@ -22,7 +23,8 @@ const apis = {
     deleteEntry,
     getEntry,
     getUser,
-    createUser
+    createUser,
+    updateUser
 }
 
 export default apis;

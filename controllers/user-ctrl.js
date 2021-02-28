@@ -20,7 +20,7 @@ createUser = (req, res) => {
         })
     }
 
-    const user = new User(body);
+    const user = new User({...body, theme: 'theme--light'});
 
     if (!user) {
         return res.status(400).json({ success: false, error: err })
@@ -40,7 +40,45 @@ createUser = (req, res) => {
     })
 }
 
+updateUser = async (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    User.findOne({ _id: req.params.id }, (err, User) => {
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'User not found!',
+            })
+        }
+        User.theme = body.theme
+        // User.time = body.time
+        User
+            .save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    output: User,
+                    message: 'User updated!',
+                })
+            })
+            .catch(error => {
+                return res.status(404).json({
+                    error,
+                    message: 'User not updated!',
+                })
+            })
+    })
+}
+
 module.exports = {
     getUser,
-    createUser
+    createUser,
+    updateUser
 }

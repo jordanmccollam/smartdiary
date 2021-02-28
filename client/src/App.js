@@ -7,6 +7,7 @@ import apis from './api';
 function App() {
   const { loginWithRedirect, logout, user } = useAuth0();
   const [ theme, setTheme ] = useState('theme--light');
+  const [ dbUser, setDbUser ] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -17,8 +18,18 @@ function App() {
   const toggleTheme = () => {
     if (theme === 'theme--dark') {
         setTheme('theme--light');
+        apis.updateUser(dbUser._id, {theme: 'theme--light'}).then(res => {
+          console.log("updateUser:: res", res);
+        }).catch(e => {
+          console.error("updateUser", e);
+        })
     } else {
         setTheme('theme--dark');
+        apis.updateUser(dbUser._id, {theme: 'theme--dark'}).then(res => {
+          console.log("updateUser:: res", res);
+        }).catch(e => {
+          console.error("updateUser", e);
+        })
     }
   }
 
@@ -31,6 +42,9 @@ function App() {
       console.log("connectUserToDb:: res", res);
       if (!res.data.output) {
         createUser();
+      } else {
+        setTheme(res.data.output.theme);
+        setDbUser(res.data.output);
       }
     }).catch(e => {
       console.error("connectUserToDb", e);
@@ -56,15 +70,19 @@ function App() {
 
       ) : (
         
-        <Router>
-          <Switch>
-            <Route 
-              path="/" 
-              exact
-              render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={user} signOut={signOut} />} 
-            />
-          </Switch>
-        </Router>
+        dbUser ? (
+          <Router>
+            <Switch>
+              <Route 
+                path="/" 
+                exact
+                render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={user} signOut={signOut} />} 
+              />
+            </Switch>
+          </Router>
+        ) : (
+          <Screens.Welcome.Loading />
+        )
 
       )}
     </div>

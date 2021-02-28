@@ -16,5 +16,6 @@ router.get('/entries', EntryCtrl.getEntries);
 // USERS
 router.get('/user/:email', UserCtrl.getUser);
 router.post('/user', UserCtrl.createUser);
+router.put('/user/:id', UserCtrl.updateUser);
 
 module.exports = router;
