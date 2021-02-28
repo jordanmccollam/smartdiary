@@ -351,3 +351,16 @@ button {
 .new-entry-date-selector {
     margin-right: 40px;
 }
+
+.btn-light {
+    .theme--dark & {
+        background-color: $dark--light !important;
+        border-color: $dark--light !important;
+    }
+}
+.btn-light:hover {
+    .theme--dark & {
+        background-color: #222731 !important;
+        border-color: #222731 !important;
+    }
+}
