@@ -65,26 +65,32 @@ const Entries = (props) => {
 
     return (
         <div>
-            {dates.filter(d => calculateFilter(d)).map((date, yIndex) => {
-                return (
-                    <div key={`year-${yIndex}`}>
-                        <h4 className="date-header">{moment(date).format('ll')}</h4>
-                        {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('hmm') - moment(a.time, ['h:mma']).format('hmm')).map((entry, index) => {
-                            return (
-                                <Comp.Diary.Entry 
-                                    key={`entry-${index}`}
-                                    entry={entry}
-                                    collapseAllTrigger={collapseAllTrigger}
-                                    expandAllTrigger={expandAllTrigger}
-                                    deleteEntry={deleteEntry}
-                                    editEntry={editEntry}
-                                    theme={theme} 
-                                />
-                            )
-                        })}
-                    </div>
-                )
-            })}
+            {dates.length > 0 ? (
+                dates.filter(d => calculateFilter(d)).map((date, yIndex) => {
+                    return (
+                        <div key={`year-${yIndex}`}>
+                            <h4 className="date-header">{moment(date).format('ll')}</h4>
+                            {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('hmm') - moment(a.time, ['h:mma']).format('hmm')).map((entry, index) => {
+                                return (
+                                    <Comp.Diary.Entry 
+                                        key={`entry-${index}`}
+                                        entry={entry}
+                                        collapseAllTrigger={collapseAllTrigger}
+                                        expandAllTrigger={expandAllTrigger}
+                                        deleteEntry={deleteEntry}
+                                        editEntry={editEntry}
+                                        theme={theme} 
+                                    />
+                                )
+                            })}
+                        </div>
+                    )
+                })
+            ) : (
+                <div className="card py-5 text-center">
+                    <div>You have no entries yet.</div>
+                </div>
+            )}
         </div>
     )
 }
