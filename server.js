@@ -8,7 +8,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/smartdiary', { useNewUrlParser: true
 });
 const db = mongoose.connection;
 
-const entryRouter = require('./routes/entry-router');
+const routes = require('./routes/index.js');
 
 const app = express();
 const apiPort = 3000;
@@ -23,6 +23,6 @@ app.get('/', (req, res) => {
     res.send('Smart Diary Server');
 });
 
-app.use('/api', entryRouter);
+app.use('/api', routes);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

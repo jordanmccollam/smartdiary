@@ -2,10 +2,17 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Screens from './screens';
 import { useAuth0 } from '@auth0/auth0-react';
+import apis from './api';
 
 function App() {
   const { loginWithRedirect, logout, user } = useAuth0();
   const [ theme, setTheme ] = useState('theme--light');
+
+  useEffect(() => {
+    if (user) {
+      connectUserToDb();
+    }
+  }, [user])
 
   const toggleTheme = () => {
     if (theme === 'theme--dark') {
@@ -17,6 +24,26 @@ function App() {
 
   const signOut = () => {
     logout();
+  }
+
+  const connectUserToDb = () => {
+    apis.getUser(user.email).then(res => {
+      console.log("connectUserToDb:: res", res);
+      if (!res.data.output) {
+        createUser();
+      }
+    }).catch(e => {
+      console.error("connectUserToDb", e);
+    }) 
+  }
+
+  const createUser = () => {
+    apis.createUser({email: user.email}).then(res => {
+      console.log("createUser:: res", res);
+      connectUserToDb();
+    }).catch(e => {
+      console.error("createUser", e);
+    })
   }
 
   console.log("USER", user);
