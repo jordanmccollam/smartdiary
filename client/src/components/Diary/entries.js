@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import * as Comp from '../index';
 import moment from 'moment';
 import apis from '../../api';
@@ -15,12 +15,19 @@ const Entries = (props) => {
     const [ dates, setDates ] = useState([]);
 
     useEffect(() => {
+        getDates();
+    }, [entries]);
+
+    const getDates = () => {
+        let _dates = [];
         entries.forEach((entry, index) => {
-            if (!dates.includes(entry.date)) {
-                setDates(old => [...old.filter(o => o !== entry.date), entry.date]);
+            if (!_dates.includes(entry.date)) {
+                _dates.push(entry.date);
             }
         })
-    }, [entries]);
+        _dates.sort((a, b) => moment(b , ['MM/DD/YYYY']).format('YYYYMMDD') - moment(a.date + a.time, ['MM/DD/YYYY']).format('YYYYMMDD'));
+        setDates(_dates);
+    }
 
     const calculateFilter = (date) => {
         const start = moment(filter.startDate).isBefore(filter.endDate) ? filter.startDate : filter.endDate;
@@ -52,13 +59,17 @@ const Entries = (props) => {
         })
     }
 
+    useMemo(() => {
+        getDates();
+    }, [entries])
+
     return (
         <div>
             {dates.filter(d => calculateFilter(d)).map((date, yIndex) => {
                 return (
                     <div key={`year-${yIndex}`}>
                         <h4 className="date-header">{moment(date).format('ll')}</h4>
-                        {entries.filter(e => e.date === date).map((entry, index) => {
+                        {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('hmm') - moment(a.time, ['h:mma']).format('hmm')).map((entry, index) => {
                             return (
                                 <Comp.Diary.Entry 
                                     key={`entry-${index}`}

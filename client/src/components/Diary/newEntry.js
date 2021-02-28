@@ -41,6 +41,8 @@ const NewEntry = (props) => {
         }).catch(e => {
             console.error("submit", e);
         })
+        setDate(moment(new Date()).format(dateFormat));
+        setContent('');
     }
 
     return (
