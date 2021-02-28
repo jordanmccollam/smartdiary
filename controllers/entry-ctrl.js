@@ -48,14 +48,14 @@ updateEntry = async (req, res) => {
             })
         }
         entry.date = body.date
-        entry.time = body.time
+        // entry.time = body.time
         entry.content = body.content
         entry
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: entry._id,
+                    output: entry,
                     message: 'Entry updated!',
                 })
             })
@@ -70,17 +70,11 @@ updateEntry = async (req, res) => {
 
 deleteEntry = async (req, res) => {
     await Entry.findOneAndDelete({ _id: req.params.id }, (err, entry) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+        if (!err) {
+            return res.status(200).json({ success: true, output: req.params.id });
+        } else {
+            return res.status(400).json({ success: false, error: err });
         }
-
-        if (!entry) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Entry not found` })
-        }
-
-        return res.status(200).json({ success: true, output: entry })
     }).catch(err => console.log(err))
 }
 

@@ -11,7 +11,7 @@ import { VscSmiley } from 'react-icons/vsc';
 const dateFormat = 'M/DD/YY';
 
 const NewEntry = (props) => {
-    const { collapsed, setCollapsed, theme } = props;
+    const { collapsed, setCollapsed, theme, setEntries } = props;
     const [ date, setDate ] = useState(moment(new Date()).format(dateFormat));
     const [ content, setContent ] = useState('');
 
@@ -37,6 +37,7 @@ const NewEntry = (props) => {
         apis.createEntry(toSubmit).then(res => {
             const output = res.data.output;
             console.log("submit:: output", output);
+            setEntries(old => [...old, output]);
         }).catch(e => {
             console.error("submit", e);
         })
