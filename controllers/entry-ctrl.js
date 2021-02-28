@@ -1,4 +1,5 @@
 const Entry = require('../models/entry-model');
+const User = require('../models/user-model');
 
 createEntry = (req, res) => {
     const body = req.body;
@@ -17,6 +18,33 @@ createEntry = (req, res) => {
     }
 
     entry.save().then(() => {
+
+        User.findOne({ _id: body.user }, (err, User) => {
+            if (err) {
+                return res.status(404).json({
+                    err,
+                    message: 'User not found!',
+                })
+            }
+            User.entries.push(entry._id)
+            // User.time = body.time
+            User
+                .save()
+                .then(() => {
+                    return res.status(200).json({
+                        success: true,
+                        output: User,
+                        message: 'User updated!',
+                    })
+                })
+                .catch(error => {
+                    return res.status(404).json({
+                        error,
+                        message: 'User not updated!',
+                    })
+                })
+        })
+
         return res.status(201).json({
             success: true,
             output: entry,

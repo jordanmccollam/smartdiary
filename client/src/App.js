@@ -60,8 +60,6 @@ function App() {
     })
   }
 
-  console.log("USER", user);
-
   return (
     <div className={theme + ' App'}>
       {!user ? (
@@ -76,7 +74,7 @@ function App() {
               <Route 
                 path="/" 
                 exact
-                render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={user} signOut={signOut} />} 
+                render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={{...user, ...dbUser}} signOut={signOut} />} 
               />
             </Switch>
           </Router>

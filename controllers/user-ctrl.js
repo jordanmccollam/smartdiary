@@ -1,13 +1,13 @@
 const User = require('../models/user-model');
 
 getUser = async (req, res) => {
-    await User.findOne({ email: req.params.email }, (err, user) => {
-        if (!err) {
-            return res.status(200).json({ success: true, output: user });
-        } else {
+    await User.findOne({ email: req.params.email }).populate('entries').exec((err, user) => {
+        if (err) {
             return res.status(400).json({ success: false, error: err })
+        } else {
+            return res.status(200).json({ success: true, output: user });
         }
-    }).catch(err => console.log(err))
+    })
 }
 
 createUser = (req, res) => {

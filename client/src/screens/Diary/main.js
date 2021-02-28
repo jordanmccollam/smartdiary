@@ -39,7 +39,7 @@ const initialFilter = {
 }
 
 const Main = (props) => {
-    const { toggleTheme, theme, signOut } = props;
+    const { toggleTheme, theme, signOut, user } = props;
     const [ collapsed, setCollapsed ] = useState(true);
     const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
     const [ expandAllTrigger, setExpandAllTrigger ] = useState(false);
@@ -47,18 +47,11 @@ const Main = (props) => {
     const [ entries, setEntries ] = useState([]);
 
     useEffect(() => {
-        if (testing) {
-            setEntries(testEntries);
-        } else {
-            apis.getEntries().then(res => {
-                console.log("getEntries:: output", res.data.output);
-                const _entries = res.data.output;
-                setEntries(_entries);
-            }).catch(e => {
-                console.error("getEntries", e);
-            })
+        console.log("User", user);
+        if (user) {
+            setEntries(user.entries);
         }
-    }, [])
+    }, [user])
 
     useMemo(() => {
         if (entries && entries.length > 0) {
@@ -76,23 +69,23 @@ const Main = (props) => {
                 <Col lg={3} className="side-menu d-none d-lg-block">
                     <div className="themed-underline text-center">
                         <h1>Smart Diary</h1>
-                        <h5>Property of User</h5>
+                        <h5>Property of {user.nickname}</h5>
                     </div>
-                    <div className="d-flex flex-column justify-content-between" style={{height: '88%'}}>
+                    <div className="d-flex flex-column justify-content-between">
                         <div className="text-center mt-4">
                             {theme === 'theme--light' ? (
-                                <Button variant="white" block onClick={toggleTheme}><BsSun className="text-warning" size={40} /></Button>
+                                <Button variant="light" block onClick={toggleTheme}><BsSun className="text-warning" size={40} /></Button>
                             ) : (
-                                <Button variant="white" block onClick={toggleTheme}><RiMoonClearFill className="text-primary" size={40} /></Button>
+                                <Button variant="light" block onClick={toggleTheme}><RiMoonClearFill className="text-primary" size={40} /></Button>
                             )}
                         </div>
-                        <Button onClick={signOut} variant="light" block className="text-primary" >Sign Out <AiOutlineLogout size={25} className="mb-1" /></Button>
+                        <Button onClick={signOut} variant="light" block className="text-primary mt-3 py-2" >Sign Out <AiOutlineLogout size={25} /></Button>
                     </div>
                 </Col>
                 <Col xs={12} className="d-lg-none">
                     <div className="themed-underline text-center mt-4">
                         <h1>Smart Diary</h1>
-                        <h5>Property of User</h5>
+                        <h5>Property of {user.nickname}</h5>
                     </div>
                 </Col>
                 <Col className="main-content">
@@ -101,6 +94,7 @@ const Main = (props) => {
                         setCollapsed={setCollapsed} 
                         setEntries={setEntries} 
                         theme={theme} 
+                        user={user}
                     />
                     <Comp.Diary.ToolBar 
                         setCollapseAllTrigger={setCollapseAllTrigger} 
