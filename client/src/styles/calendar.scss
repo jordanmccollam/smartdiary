@@ -20,8 +20,8 @@ $dark--white: #fff;
 $dark--primary: #cb6d56;
 $dark--primary-hover: #aa5c48;
 $dark--border-color: #bcc0c3;
-$dark--shadow-color: rgba(182, 190, 196, 0.25);
-$dark--shadow: 3px 3px 5px $shadow-color;
+$dark--shadow-color: #2b2f38;
+$dark--shadow: 3px 3px 5px $dark--shadow-color;
 $dark: #343944;
 
 @import "~bootstrap/scss/bootstrap";

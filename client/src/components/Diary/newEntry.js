@@ -7,6 +7,7 @@ import { Calendar } from 'react-date-range';
 import { BsPencil } from 'react-icons/bs';
 import { FaPaperPlane } from 'react-icons/fa';
 import { VscSmiley } from 'react-icons/vsc';
+import Mood from './mood';
 
 const dateFormat = 'M/DD/YY';
 
@@ -14,6 +15,7 @@ const NewEntry = (props) => {
     const { collapsed, setCollapsed, theme, setEntries, user } = props;
     const [ date, setDate ] = useState(moment(new Date()).format(dateFormat));
     const [ content, setContent ] = useState('');
+    const [ moodMeter, setMoodMeter ] = useState(false);
 
     const changeDate = (_date) => {
         console.log("changeDate", _date);
@@ -25,6 +27,10 @@ const NewEntry = (props) => {
 
     const changeContent = (event) => {
         setContent(event.target.value);
+    }
+
+    const toggleMoodMeter = () => {
+        setMoodMeter(!moodMeter);
     }
 
     const submit = () => {
@@ -83,22 +89,27 @@ const NewEntry = (props) => {
                                     <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                                 </div>
                             </div>
-                            <div className="new-entry-content" >
-                                <Form.Control as="textarea" rows={3} value={content} onChange={changeContent} />
-                                <Button onClick={submit} variant="primary" block className="btn-sm form-btn">Submit <FaPaperPlane/></Button>
-                            </div>
-                            
-                            <Row className="pb-2">
-                                <Col>
-                                    <Button block variant="white">Mood <VscSmiley size={20} className="mb-1" /></Button>
-                                </Col>
-                                <Col>
-                                    <Button block variant="white">Post</Button>
-                                </Col>
-                                <Col>
-                                    <Button block variant="white">Post</Button>
-                                </Col>
-                            </Row>
+                            {moodMeter ? <Mood toggleMoodMeter={toggleMoodMeter} /> : (
+                                <>
+                                    <div className="new-entry-content" >
+                                        <Form.Control as="textarea" rows={3} value={content} onChange={changeContent} />
+                                        <Button onClick={submit} variant="primary" block className="btn-sm form-btn">Submit <FaPaperPlane/></Button>
+                                    </div>
+
+                                
+                                    <Row className="pb-2">
+                                        <Col>
+                                            <Button onClick={toggleMoodMeter} block variant="white">Mood <VscSmiley size={20} className="mb-1" /></Button>
+                                        </Col>
+                                        <Col>
+                                            <Button block variant="white">Post</Button>
+                                        </Col>
+                                        <Col>
+                                            <Button block variant="white">Post</Button>
+                                        </Col>
+                                    </Row>
+                                </>
+                            )}
                         </>
                     )}
                 </div>
