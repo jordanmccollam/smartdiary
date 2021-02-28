@@ -4,6 +4,7 @@ import * as Comp from '../../components';
 import moment from 'moment';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
+import { AiOutlineLogout } from 'react-icons/ai';
 import apis from '../../api';
 
 const testEntries = [
@@ -38,7 +39,7 @@ const initialFilter = {
 }
 
 const Main = (props) => {
-    const { toggleTheme, theme } = props;
+    const { toggleTheme, theme, signOut } = props;
     const [ collapsed, setCollapsed ] = useState(true);
     const [ collapseAllTrigger, setCollapseAllTrigger ] = useState(false);
     const [ expandAllTrigger, setExpandAllTrigger ] = useState(false);
@@ -77,12 +78,15 @@ const Main = (props) => {
                         <h1>Smart Diary</h1>
                         <h5>Property of User</h5>
                     </div>
-                    <div className="text-center mt-4">
-                        {theme === 'theme--light' ? (
-                            <Button variant="white" block onClick={toggleTheme}><BsSun className="text-warning" size={40} /></Button>
-                        ) : (
-                            <Button variant="white" block onClick={toggleTheme}><RiMoonClearFill className="text-primary" size={40} /></Button>
-                        )}
+                    <div className="d-flex flex-column justify-content-between" style={{height: '88%'}}>
+                        <div className="text-center mt-4">
+                            {theme === 'theme--light' ? (
+                                <Button variant="white" block onClick={toggleTheme}><BsSun className="text-warning" size={40} /></Button>
+                            ) : (
+                                <Button variant="white" block onClick={toggleTheme}><RiMoonClearFill className="text-primary" size={40} /></Button>
+                            )}
+                        </div>
+                        <Button onClick={signOut} variant="light" block className="text-primary" >Sign Out <AiOutlineLogout size={25} className="mb-1" /></Button>
                     </div>
                 </Col>
                 <Col xs={12} className="d-lg-none">
