@@ -49,7 +49,7 @@ const Main = (props) => {
     useEffect(() => {
         console.log("User", user);
         if (user) {
-            setEntries(user.entries);
+            setEntries([...user.entries, ...user.moods]);
         }
     }, [user])
 

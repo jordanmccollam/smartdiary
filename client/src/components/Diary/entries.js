@@ -71,17 +71,31 @@ const Entries = (props) => {
                         <div key={`year-${yIndex}`}>
                             <h4 className="date-header">{moment(date).format('ll')}</h4>
                             {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('hmm') - moment(a.time, ['h:mma']).format('hmm')).map((entry, index) => {
-                                return (
-                                    <Comp.Diary.Entry 
-                                        key={`entry-${index}`}
-                                        entry={entry}
-                                        collapseAllTrigger={collapseAllTrigger}
-                                        expandAllTrigger={expandAllTrigger}
-                                        deleteEntry={deleteEntry}
-                                        editEntry={editEntry}
-                                        theme={theme} 
-                                    />
-                                )
+                                if (entry.content) {
+                                    return (
+                                        <Comp.Diary.Entry 
+                                            key={`entry-${index}`}
+                                            entry={entry}
+                                            collapseAllTrigger={collapseAllTrigger}
+                                            expandAllTrigger={expandAllTrigger}
+                                            deleteEntry={deleteEntry}
+                                            editEntry={editEntry}
+                                            theme={theme} 
+                                        />
+                                    )
+                                } else {
+                                    return (
+                                        <Comp.Diary.MoodEntry 
+                                            key={`entry-${index}`}
+                                            entry={entry}
+                                            collapseAllTrigger={collapseAllTrigger}
+                                            expandAllTrigger={expandAllTrigger}
+                                            deleteEntry={deleteEntry}
+                                            editEntry={editEntry}
+                                            theme={theme} 
+                                        />
+                                    )
+                                }
                             })}
                         </div>
                     )

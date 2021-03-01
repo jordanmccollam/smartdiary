@@ -65,7 +65,7 @@ const NewEntry = (props) => {
         apis.createMood(toSubmit).then(res => {
             const output = res.data.output;
             console.log("submitMood:: output", output);
-            // setMoods(old => [...old, output]);
+            setEntries(old => [...old, output]);
         }).catch(e => {
             console.error("submitMood", e);
         })
