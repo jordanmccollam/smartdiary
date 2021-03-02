@@ -79,7 +79,7 @@ const Entries = (props) => {
 
     return (
         <div>
-            {dates.length > 0 ? (
+            {dates.filter(d => calculateFilter(d)).length > 0 ? (
                 dates.filter(d => calculateFilter(d)).map((date, yIndex) => {
                     return (
                         <div key={`year-${yIndex}`}>
@@ -117,7 +117,11 @@ const Entries = (props) => {
                 })
             ) : (
                 <div className="card py-5 text-center">
-                    <div>You have no entries yet.</div>
+                    {dates.length > 0 ? (
+                        <div>You have no entries in this date range</div>
+                    ) : (
+                        <div>You have no entries yet</div>
+                    )}
                 </div>
             )}
         </div>
