@@ -10,7 +10,9 @@ const Entries = (props) => {
         expandAllTrigger,
         entries,
         setEntries,
-        theme
+        theme,
+        moods,
+        setMoods
     } = props;
     const [ dates, setDates ] = useState([]);
 
@@ -25,7 +27,7 @@ const Entries = (props) => {
                 _dates.push(entry.date);
             }
         })
-        _dates.sort((a, b) => moment(b , ['MM/DD/YYYY']).format('YYYYMMDD') - moment(a.date + a.time, ['MM/DD/YYYY']).format('YYYYMMDD'));
+        _dates.sort((a, b) => moment(b , ['MM/DD/YYYY']).format('YYYYMMDD') - moment(a, ['MM/DD/YYYY']).format('YYYYMMDD'));
         setDates(_dates);
     }
 
@@ -45,6 +47,18 @@ const Entries = (props) => {
             console.log("deleteEntry:: res", res);
             console.log("deleteEntry:: output", res.data.output);
             setEntries(old => old.filter(o => o._id !== res.data.output));
+            setMoods(old => old.filter(o => o._id !== res.data.output));
+        }).catch(e => {
+            console.error('deleteEntry', e);
+        })
+    }
+    const deleteMood = (id) => {
+        console.log("deleteMood:: deleting", id);
+        apis.deleteMood(id).then(res => {
+            console.log("deleteMood:: res", res);
+            console.log("deleteMood:: output", res.data.output);
+            setEntries(old => old.filter(o => o._id !== res.data.output));
+            setMoods(old => old.filter(o => o._id !== res.data.output));
         }).catch(e => {
             console.error('deleteEntry', e);
         })
@@ -70,7 +84,7 @@ const Entries = (props) => {
                     return (
                         <div key={`year-${yIndex}`}>
                             <h4 className="date-header">{moment(date).format('ll')}</h4>
-                            {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('hmm') - moment(a.time, ['h:mma']).format('hmm')).map((entry, index) => {
+                            {entries.filter(e => e.date === date).sort((a, b) => moment(b.time, ['h:mma']).format('Hmm') - moment(a.time, ['h:mma']).format('Hmm')).map((entry, index) => {
                                 if (entry.content) {
                                     return (
                                         <Comp.Diary.Entry 
@@ -90,9 +104,10 @@ const Entries = (props) => {
                                             entry={entry}
                                             collapseAllTrigger={collapseAllTrigger}
                                             expandAllTrigger={expandAllTrigger}
-                                            deleteEntry={deleteEntry}
+                                            deleteMood={deleteMood}
                                             editEntry={editEntry}
                                             theme={theme} 
+                                            moods={moods}
                                         />
                                     )
                                 }

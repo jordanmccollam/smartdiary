@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Row, Col, Form, Button, Dropdown } from 'react-bootstrap';
 import * as Diary from '../Diary';
+import * as Graphs from '../Graphs';
 import { Calendar } from 'react-date-range';
 import moment from 'moment';
 import { BsClock, BsTrash, BsPencilSquare } from 'react-icons/bs';
@@ -14,9 +15,9 @@ const MoodEntry = (props) => {
         entry,
         collapseAllTrigger,
         expandAllTrigger,
-        deleteEntry,
-        editEntry,
-        theme
+        theme,
+        moods,
+        deleteMood
     } = props;
 
     const [ collapsed, setCollapsed ] = useState(true);
@@ -99,8 +100,16 @@ const MoodEntry = (props) => {
                             <div className="entry-content d-flex align-items-center">
                                 {renderContent()} <span className="ml-2"> - {renderAdvice()}</span>
                             </div>
+                            <div className="d-flex justify-content-center mt-5">
+                                <Graphs.Moods 
+                                    theme={theme} 
+                                    moods={moods}
+                                    title={"Your Recent Moods"}
+                                    recent
+                                />
+                            </div>
                             <div className="d-flex justify-content-end mt-2">
-                                <Button onClick={() => deleteEntry(entry._id)} variant="white" style={{width: 100}}>Delete <BsTrash/></Button>
+                                <Button onClick={() => deleteMood(entry._id)} variant="white" style={{width: 100}}>Delete <BsTrash/></Button>
                             </div>
                         </>
                     )}

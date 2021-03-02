@@ -45,6 +45,7 @@ const Main = (props) => {
     const [ expandAllTrigger, setExpandAllTrigger ] = useState(false);
     const [ filter, setFilter ] = useState(initialFilter);
     const [ entries, setEntries ] = useState([]);
+    const [ moods, setMoods ] = useState([]);
 
     useEffect(() => {
         console.log("User", user);
@@ -55,7 +56,8 @@ const Main = (props) => {
 
     useMemo(() => {
         if (entries && entries.length > 0) {
-            entries.sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(a.date + a.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
+            entries.sort((a, b) => moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm') - moment(b.date + b.time, ['MM/DD/YYYYh:mm a']).format('YYYYMMDDHHmm'));
+            setMoods(entries.filter(e => e.hasOwnProperty('energy')));
         }
     }, [entries])
 
@@ -72,13 +74,22 @@ const Main = (props) => {
                         <h5>Property of {user.nickname}</h5>
                     </div>
                     <div className="d-flex flex-column justify-content-between">
-                        <div className="text-center mt-4">
+                    <div className="text-center mt-4">
                             {theme === 'theme--light' ? (
                                 <Button variant="light" block onClick={toggleTheme}><BsSun className="text-warning" size={40} /></Button>
                             ) : (
                                 <Button variant="light" block onClick={toggleTheme}><RiMoonClearFill className="text-primary" size={40} /></Button>
                             )}
                         </div>
+                        {moods.length > 0 && (
+                            <Button variant="light" className="mt-3">
+                                <Comp.Graphs.Moods 
+                                    theme={theme} 
+                                    moods={moods}
+                                    title={moment(new Date()).format('YYYY') + ' Moods'}
+                                />
+                            </Button>
+                        )}
                         <Button onClick={signOut} variant="light" block className="text-primary mt-3 py-2" >Sign Out <AiOutlineLogout size={25} /></Button>
                     </div>
                 </Col>
@@ -109,6 +120,8 @@ const Main = (props) => {
                             collapseAllTrigger={collapseAllTrigger} 
                             expandAllTrigger={expandAllTrigger}
                             filter={filter}
+                            moods={moods}
+                            setMoods={setMoods}
                             entries={entries}
                             setEntries={setEntries}
                             theme={theme} 
