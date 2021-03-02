@@ -1,2 +1,0 @@
-# smartdiary
-Smart Diary
