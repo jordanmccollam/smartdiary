@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require("path");
 
-console.log("PROCESS ENV", process.env);
-
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, { useNewUrlParser: true }).catch(e => {
     console.error('Connection error', e.message);
