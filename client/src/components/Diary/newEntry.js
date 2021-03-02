@@ -122,12 +122,6 @@ const NewEntry = (props) => {
                                         <Col>
                                             <Button onClick={toggleMoodMeter} block variant="white">Mood <VscSmiley size={20} className="mb-1" /></Button>
                                         </Col>
-                                        <Col>
-                                            <Button block variant="white">Post</Button>
-                                        </Col>
-                                        <Col>
-                                            <Button block variant="white">Post</Button>
-                                        </Col>
                                     </Row>
                                 </>
                             )}

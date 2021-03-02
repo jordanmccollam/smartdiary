@@ -8,7 +8,7 @@ const NewEntry = (props) => {
         setCollapsed(!collapsed);
     }
 
-    return collapsed ? <BsChevronUp onClick={toggleCollapse} className='collapse-btn' /> : <BsChevronDown onClick={toggleCollapse} className='collapse-btn' />
+    return collapsed ? <BsChevronDown onClick={toggleCollapse} className='collapse-btn' /> : <BsChevronUp onClick={toggleCollapse} className='collapse-btn' />
     
 }
 
