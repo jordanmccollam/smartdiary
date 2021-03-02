@@ -35,13 +35,13 @@ const ToolBar = (props) => {
 
     const tools = [
         {
-            icon: <BsChevronDown size={toolSize}/>,
+            icon: <BsChevronUp size={toolSize}/>,
             action: () => setCollapseAllTrigger(old => !old),
             label: 'Collapse All',
             size: 3
         },
         {
-            icon: <BsChevronUp size={toolSize}/>,
+            icon: <BsChevronDown size={toolSize}/>,
             action: () => setExpandAllTrigger(old => !old),
             label: 'Expand All',
             size: 3
