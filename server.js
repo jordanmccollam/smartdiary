@@ -21,6 +21,8 @@ app.use(bodyParser.json());
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.use('/api', routes);
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
@@ -28,9 +30,5 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => {
     res.send('Smart Diary Server');
 });
-
-app.use('/api', routes);
-
-console.log("NODE_ENV", process.env.NODE_ENV);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
