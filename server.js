@@ -20,12 +20,10 @@ db.on('connected', () => {
     console.log("Mongoose is conntected!");
 });
 
-// DATA PARSING
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
-// HTTP requests
 app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
