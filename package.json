@@ -18,6 +18,9 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
+    "build": "cd client && yarn build",
+    "install-client": "cd client && yarn",
+    "heroku-postbuild": "yarn install-client && yarn build",
     "start-dev": "concurrently \"nodemon server.js\" \"cd client/ && yarn start\"",
     "start": "node server.js",
     "find": "sudo lsof -iTCP:3000 -sTCP:LISTEN"
