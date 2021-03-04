@@ -1,27 +1,23 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'https://smart-diary.herokuapp.com/api',
-})
+// USERS
+export const getUser = email => axios.get(`/api/user/${email}`);
+export const createUser = payload => axios.post(`/api/user`, payload);
+export const updateUser = (id, payload) => axios.put(`/api/user/${id}`, payload);
 
 // ENTRIES
-export const createEntry = payload => api.post(`/entry`, payload);
-export const getEntries = () => api.get(`/entries`);
-export const updateEntry = (id, payload) => api.put(`/entry/${id}`, payload);
-export const deleteEntry = id => api.delete(`/entry/${id}`);
-export const getEntry = id => api.get(`/entry/${id}`);
+export const getEntries = () => axios.get(`/api/entries`);
+export const getEntry = id => axios.get(`/api/entry/${id}`);
+export const createEntry = payload => axios.post(`/api/entry`, payload);
+export const updateEntry = (id, payload) => axios.put(`/api/entry/${id}`, payload);
+export const deleteEntry = id => axios.delete(`/api/entry/${id}`);
 
 // MOODS
-export const createMood = payload => api.post(`/mood`, payload);
-export const getMoods = () => api.get(`/mood`);
-export const updateMood = (id, payload) => api.put(`/mood/${id}`, payload);
-export const deleteMood = id => api.delete(`/mood/${id}`);
-export const getMood = id => api.get(`/mood/${id}`);
-
-// USERS
-export const getUser = email => api.get(`/user/${email}`);
-export const createUser = payload => api.post(`/user`, payload);
-export const updateUser = (id, payload) => api.put(`/user/${id}`, payload);
+export const getMoods = () => axios.get(`/api/moods`);
+export const getMood = id => axios.get(`/api/mood/${id}`);
+export const createMood = payload => axios.post(`/api/mood`, payload);
+export const updateMood = (id, payload) => axios.put(`/api/mood/${id}`, payload);
+export const deleteMood = id => axios.delete(`/api/mood/${id}`);
 
 const apis = {
     createEntry,
