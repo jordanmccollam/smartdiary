@@ -125,6 +125,7 @@ const Main = (props) => {
                             entries={entries}
                             setEntries={setEntries}
                             theme={theme} 
+                            user={user}
                         />
                     </div>
                 </Col>

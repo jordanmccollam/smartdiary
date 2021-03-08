@@ -12,7 +12,8 @@ const Entries = (props) => {
         setEntries,
         theme,
         moods,
-        setMoods
+        setMoods,
+        user
     } = props;
     const [ dates, setDates ] = useState([]);
 
@@ -43,7 +44,7 @@ const Entries = (props) => {
 
     const deleteEntry = (id) => {
         console.log("deleteEntry:: deleting", id);
-        apis.deleteEntry(id).then(res => {
+        apis.deleteEntry(user.token, id).then(res => {
             console.log("deleteEntry:: res", res);
             console.log("deleteEntry:: output", res.data.output);
             setEntries(old => old.filter(o => o._id !== res.data.output));
@@ -54,7 +55,7 @@ const Entries = (props) => {
     }
     const deleteMood = (id) => {
         console.log("deleteMood:: deleting", id);
-        apis.deleteMood(id).then(res => {
+        apis.deleteMood(user.token, id).then(res => {
             console.log("deleteMood:: res", res);
             console.log("deleteMood:: output", res.data.output);
             setEntries(old => old.filter(o => o._id !== res.data.output));
@@ -66,7 +67,7 @@ const Entries = (props) => {
 
     const editEntry = (id, body) => {
         console.log("editEntry:: editing", id);
-        apis.updateEntry(id, body).then(res => {
+        apis.updateEntry(user.token, id, body).then(res => {
             console.log("editEntry:: res", res);
             console.log("editEntry:: output", res.data.output);
             setEntries(old => [...old.filter(o => o._id !== res.data.output._id), res.data.output]);

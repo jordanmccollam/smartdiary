@@ -5,9 +5,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import apis from './api';
 
 function App() {
-  const { loginWithRedirect, logout, user } = useAuth0();
+  const { loginWithRedirect, logout, user, getAccessTokenSilently } = useAuth0();
   const [ theme, setTheme ] = useState('theme--light');
   const [ dbUser, setDbUser ] = useState(null);
+  const [ token, setToken ] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -37,11 +38,13 @@ function App() {
     logout();
   }
 
-  const connectUserToDb = () => {
-    apis.getUser(user.email).then(res => {
+  const connectUserToDb = async () => {
+    const _token = await getAccessTokenSilently();
+    setToken(_token);
+    apis.getUser(_token, user.email).then(res => {
       console.log("connectUserToDb:: res", res);
       if (!res.data.output) {
-        createUser();
+        createUser(_token);
       } else {
         setTheme(res.data.output.theme);
         setDbUser(res.data.output);
@@ -51,8 +54,8 @@ function App() {
     }) 
   }
 
-  const createUser = () => {
-    apis.createUser({email: user.email}).then(res => {
+  const createUser = (_token) => {
+    apis.createUser(_token, {email: user.email}).then(res => {
       console.log("createUser:: res", res);
       connectUserToDb();
     }).catch(e => {
@@ -74,7 +77,7 @@ function App() {
               <Route 
                 path="/" 
                 exact
-                render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={{...user, ...dbUser}} signOut={signOut} />} 
+                render={(props) => <Screens.Diary.Main {...props} theme={theme} toggleTheme={toggleTheme} user={{...user, ...dbUser, token}} signOut={signOut} />} 
               />
             </Switch>
           </Router>

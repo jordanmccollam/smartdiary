@@ -41,7 +41,7 @@ const NewEntry = (props) => {
             user: user._id
         }
         console.log("submit:: toSubmit", toSubmit);
-        apis.createEntry(toSubmit).then(res => {
+        apis.createEntry(user.token, toSubmit).then(res => {
             const output = res.data.output;
             console.log("submit:: output", output);
             setEntries(old => [...old, output]);
@@ -62,7 +62,7 @@ const NewEntry = (props) => {
             pleasantness: mood.value.x
         }
         console.log("submitMood:: toSubmit", toSubmit);
-        apis.createMood(toSubmit).then(res => {
+        apis.createMood(user.token, toSubmit).then(res => {
             const output = res.data.output;
             console.log("submitMood:: output", output);
             setEntries(old => [...old, output]);
