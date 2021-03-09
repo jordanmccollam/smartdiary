@@ -68,7 +68,7 @@ const Main = (props) => {
     return (
         <Container fluid>
             <Row className="max-vh">
-                <Col lg={3} className="side-menu d-none d-lg-block">
+                <Col lg={3} className="side-menu d-none d-xl-block">
                     <div className="themed-underline text-center">
                         <h1>Smart Diary</h1>
                         <h5>Property of {user.nickname}</h5>

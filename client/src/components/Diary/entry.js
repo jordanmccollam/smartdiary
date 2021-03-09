@@ -76,7 +76,7 @@ const Entry = (props) => {
                     {collapsed ? (
                         <>
                             <div className="entry-header collapsed m-0">
-                                <Form.Label>{entry.time} <BsClock/></Form.Label>
+                                <Form.Label className="pr-2">{entry.time} <BsClock className="d-none d-lg-inline"/></Form.Label>
                                 <div className="entry-content collapsed">
                                     {entry.content}
                                 </div>
@@ -87,7 +87,7 @@ const Entry = (props) => {
                         !editing ? (
                             <>
                                 <div className="entry-header">
-                                    <Form.Label>{entry.time} <BsClock/></Form.Label>
+                                    <Form.Label className="pr-2">{entry.time} <BsClock className="d-none d-lg-inline"/></Form.Label>
                                     <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                                 </div>
                                 <div className="entry-content">
@@ -101,7 +101,7 @@ const Entry = (props) => {
                         ) : (
                             <>
                                 <div className="entry-header">
-                                    <Form.Label>{editing.time} <BsClock/></Form.Label>
+                                    <Form.Label className="pr-2">{editing.time} <BsClock className="d-none d-lg-inline"/></Form.Label>
                                     <div className="d-flex align-items-center">
                                         <Dropdown className="new-entry-date-selector">
                                             <Dropdown.Toggle DropdownIndicator variant="white" className="text-secondary">

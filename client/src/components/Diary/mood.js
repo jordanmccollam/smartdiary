@@ -156,26 +156,28 @@ const Mood = (props) => {
     }
 
     return (
-        <Row className="pb-2">
-            <Col lg={'auto'} xl={5} className="mood-meter-container">
-                {cells.map((row, rIndex) => {
-                    return (
-                        <div className="mood-row pl-2" key={`mood-row-${rIndex}`}>
-                            {row.map((cell, cIndex) => {
-                                return (
-                                    <div 
-                                        onClick={() => selectCell(cell)} 
-                                        className={cell === mood ? "mood-cell selected" : "mood-cell"} 
-                                        style={{backgroundColor: cell.color}} 
-                                        key={`mood-cell-${cIndex}`} 
-                                    ></div>
-                                )
-                            })}
-                        </div>
-                    )
-                })}
-                <h5 className="text-center" ><BsArrowLeft/> Pleasantness <BsArrowRight/></h5>
-                <h5 className="text-center energy-label" ><BsArrowLeft/> Energy <BsArrowRight/></h5>
+        <Row className="pb-2 d-flex justify-content-center" >
+            <Col sm={6} lg={5} className="mood-meter-container d-flex justify-content-center">
+                <div>
+                    {cells.map((row, rIndex) => {
+                        return (
+                            <div className="mood-row pl-2" key={`mood-row-${rIndex}`}>
+                                {row.map((cell, cIndex) => {
+                                    return (
+                                        <div 
+                                            onClick={() => selectCell(cell)} 
+                                            className={cell === mood ? "mood-cell selected" : "mood-cell"} 
+                                            style={{backgroundColor: cell.color}} 
+                                            key={`mood-cell-${cIndex}`} 
+                                        ></div>
+                                    )
+                                })}
+                            </div>
+                        )
+                    })}
+                    <h5 className="text-center" ><BsArrowLeft/> Pleasantness <BsArrowRight/></h5>
+                    <h5 className="text-center energy-label" ><BsArrowLeft/> Energy <BsArrowRight/></h5>
+                </div>
             </Col>
 
             <Col className="text-center d-flex flex-column justify-content-center">

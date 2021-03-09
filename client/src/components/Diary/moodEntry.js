@@ -84,7 +84,7 @@ const MoodEntry = (props) => {
                     {collapsed ? (
                         <>
                             <div className="entry-header collapsed m-0">
-                                <Form.Label>{entry.time} <BsClock/></Form.Label>
+                                <Form.Label className="pr-2">{entry.time} <BsClock className="d-none d-lg-inline"/></Form.Label>
                                 <div className="entry-content collapsed">
                                     {renderContent()} <span className="ml-2"> - {renderAdvice()}</span>
                                 </div>
@@ -94,7 +94,7 @@ const MoodEntry = (props) => {
                     ) :(
                         <>
                             <div className="entry-header">
-                                <Form.Label>{entry.time} <BsClock/></Form.Label>
+                                <Form.Label className="pr-2">{entry.time} <BsClock className="d-none d-lg-inline"/></Form.Label>
                                 <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                             </div>
                             <div className="entry-content text-center">
