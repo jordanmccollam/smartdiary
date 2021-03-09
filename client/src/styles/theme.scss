@@ -65,7 +65,8 @@ $dark: #343944;
 
 @media only screen and (max-width: 1200px) {
     .main-content {
-        height: auto;
+        min-height: 100vh;
+        height: max-content;
         .scrollable-content,
         .scrollable-content.collapsed {
             height: auto;

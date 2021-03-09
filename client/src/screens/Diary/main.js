@@ -93,7 +93,7 @@ const Main = (props) => {
                         <Button onClick={signOut} variant="light" block className="text-primary mt-3 py-2" >Sign Out <AiOutlineLogout size={25} /></Button>
                     </div>
                 </Col>
-                <Col xs={12} className="d-xl-none">
+                <Col xs={12} className="d-xl-none" style={{height: 'min-content'}}>
                     <div className="themed-underline text-center mt-4">
                         <h4>Smart Diary of {user.nickname}</h4>
                     </div>
