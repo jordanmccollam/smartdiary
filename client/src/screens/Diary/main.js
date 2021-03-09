@@ -93,13 +93,13 @@ const Main = (props) => {
                         <Button onClick={signOut} variant="light" block className="text-primary mt-3 py-2" >Sign Out <AiOutlineLogout size={25} /></Button>
                     </div>
                 </Col>
-                <Col xs={12} className="d-lg-none">
+                <Col xs={12} className="d-xl-none">
                     <div className="themed-underline text-center mt-4">
                         <h4>Smart Diary of {user.nickname}</h4>
                     </div>
                 </Col>
-                <Col className="main-content my-4 mx-lg-4 px-1">
-                    <Row className="justify-content-center d-lg-none px-3">
+                <Col className="main-content my-4 mx-xl-4 px-1">
+                    <Row className="justify-content-center d-xl-none px-3">
                         <Col xs={6}>
                             {theme === 'theme--light' ? (
                                 <Button variant="light" className="text-primary btn-sm" block onClick={toggleTheme}>Light Mode <BsSun size={25} /></Button>
@@ -139,7 +139,7 @@ const Main = (props) => {
                             user={user}
                         />
                     </div>
-                    <Button onClick={() => window.scrollTo(0, 0)} variant="primary" className="back-to-top d-lg-none"><BsArrowUp /></Button>
+                    <Button onClick={() => window.scrollTo(0, 0)} variant="primary" className="back-to-top d-xl-none"><BsArrowUp /></Button>
                 </Col>
             </Row>
         </Container>
