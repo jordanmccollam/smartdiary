@@ -15,7 +15,7 @@ const Main = (props) => {
                             <h1>Smart Diary</h1>
                         </div>
 
-                        <div className="mt-5 px-5 mx-5">
+                        <div className="mt-5 px-5 mx-lg-5">
                             <Button onClick={signIn} block variant="primary" className="py-3" >Sign In <AiOutlineLogin size={25} /></Button>
                         </div>
                     </div>

@@ -80,7 +80,7 @@ const NewEntry = (props) => {
                     {collapsed ? (
                         <>
                             <div className="entry-header collapsed">
-                                <Form.Label>New Entry <BsPencil/></Form.Label>
+                                <Form.Label><span className="d-none d-lg-inline">New Entry</span> <BsPencil/></Form.Label>
                                 <div className="collapsed-new-input">
                                     <Form.Control type="text" value={content} onChange={changeContent} />
                                     <Button onClick={submit} className="input-btn" variant="primary"><FaPaperPlane/></Button>
@@ -91,11 +91,11 @@ const NewEntry = (props) => {
                     ) : (
                         <>
                             <div className="entry-header">
-                                <Form.Label>New Entry <BsPencil/></Form.Label>
+                                <Form.Label><span className="d-none d-sm-inline">New Entry</span> <BsPencil/></Form.Label>
                                 <div className="d-flex align-items-center">
                                     <Dropdown className="new-entry-date-selector">
                                         <Dropdown.Toggle DropdownIndicator variant="white" className="text-secondary">
-                                            Date of post: {date}
+                                            Date: {date}
                                         </Dropdown.Toggle>
                                     
                                         <Dropdown.Menu>

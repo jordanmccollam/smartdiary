@@ -46,8 +46,8 @@ $dark: #343944;
 
 .main-content {
     height: calc(100% - 60px);
-    margin: 30px;
-    overflow: auto;
+    overflow: hidden;
+    background-color: $light;
     .scrollable-content,
     .scrollable-content.collapsed {
         overflow: auto;
@@ -57,6 +57,19 @@ $dark: #343944;
     }
     .scrollable-content.collapsed {
         height: calc(100vh - 205px);
+    }
+    .theme--dark & {
+        background-color: $dark--light;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .main-content {
+        height: auto;
+        .scrollable-content,
+        .scrollable-content.collapsed {
+            height: auto;
+        }
     }
 }
 
@@ -363,4 +376,14 @@ button {
         background-color: #222731 !important;
         border-color: #222731 !important;
     }
+}
+
+.back-to-top {
+    border-radius: 100% !important;
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    box-shadow: $shadow;
 }

@@ -38,13 +38,15 @@ const ToolBar = (props) => {
             icon: <BsChevronUp size={toolSize}/>,
             action: () => setCollapseAllTrigger(old => !old),
             label: 'Collapse All',
-            size: 3
+            size: 3,
+            smallSize: 2
         },
         {
             icon: <BsChevronDown size={toolSize}/>,
             action: () => setExpandAllTrigger(old => !old),
             label: 'Expand All',
-            size: 3
+            size: 3,
+            smallSize: 2
         },
         {
             icon: 
@@ -66,16 +68,17 @@ const ToolBar = (props) => {
                     label: <Button block variant="white" onClick={resetFilter} >Reset</Button>
                 },
             ],
-            size: null
+            size: null,
+            smallSize: null
         },
     ]
 
     return (
-        <Row className="px-3 justify-content-between">
+        <Row className="px-3 justify-content-around">
             {tools.map((tool, index) => {
                 if (tool.dropdown) {
                     return (
-                        <Col lg={tool.size} key={`tool-${index}`} >
+                        <Col xs={tool.smallSize} lg={tool.size} key={`tool-${index}`} >
                             <OverlayTrigger
                                 placement='top'
                                 overlay={
@@ -105,7 +108,7 @@ const ToolBar = (props) => {
                 }
                 else if (tool.action) {
                     return (
-                        <Col lg={tool.size} key={`tool-${index}`} >
+                        <Col xs={tool.smallSize} lg={tool.size} key={`tool-${index}`} >
                             <OverlayTrigger
                                 placement='top'
                                 overlay={

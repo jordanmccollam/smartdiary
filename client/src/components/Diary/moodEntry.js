@@ -97,8 +97,9 @@ const MoodEntry = (props) => {
                                 <Form.Label>{entry.time} <BsClock/></Form.Label>
                                 <Diary.Collapse collapsed={collapsed} setCollapsed={setCollapsed} />
                             </div>
-                            <div className="entry-content d-flex align-items-center">
-                                {renderContent()} <span className="ml-2"> - {renderAdvice()}</span>
+                            <div className="entry-content text-center">
+                                {renderContent()}
+                                <div>- {renderAdvice()}</div>
                             </div>
                             <div className="d-flex justify-content-center mt-5">
                                 <Graphs.Moods 

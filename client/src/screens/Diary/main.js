@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import * as Comp from '../../components';
 import moment from 'moment';
-import { BsSun } from 'react-icons/bs';
+import { BsSun, BsArrowUp } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import { AiOutlineLogout } from 'react-icons/ai';
 import apis from '../../api';
@@ -95,11 +95,22 @@ const Main = (props) => {
                 </Col>
                 <Col xs={12} className="d-lg-none">
                     <div className="themed-underline text-center mt-4">
-                        <h1>Smart Diary</h1>
-                        <h5>Property of {user.nickname}</h5>
+                        <h4>Smart Diary of {user.nickname}</h4>
                     </div>
                 </Col>
-                <Col className="main-content">
+                <Col className="main-content my-4 mx-lg-4 px-1">
+                    <Row className="justify-content-center d-lg-none px-3">
+                        <Col xs={6}>
+                            {theme === 'theme--light' ? (
+                                <Button variant="light" className="text-primary btn-sm" block onClick={toggleTheme}>Light Mode <BsSun size={25} /></Button>
+                            ) : (
+                                <Button variant="light" className="text-primary btn-sm" block onClick={toggleTheme}>Dark Mode <RiMoonClearFill size={25} /></Button>
+                            )}
+                        </Col>
+                        <Col xs={6}>
+                            <Button onClick={signOut} variant="light" block className="d-block text-primary btn-sm mb-2" >Sign Out <AiOutlineLogout size={25} /></Button>
+                        </Col>
+                    </Row>
                     <Comp.Diary.NewEntry 
                         collapsed={collapsed} 
                         setCollapsed={setCollapsed} 
@@ -128,6 +139,7 @@ const Main = (props) => {
                             user={user}
                         />
                     </div>
+                    <Button onClick={() => window.scrollTo(0, 0)} variant="primary" className="back-to-top d-lg-none"><BsArrowUp /></Button>
                 </Col>
             </Row>
         </Container>
