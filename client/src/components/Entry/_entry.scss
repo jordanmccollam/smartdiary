@@ -1,0 +1,33 @@
+@import "../../sass/variables";
+
+.entry {
+    
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 $space-10;
+
+
+        .entry-expanded & {
+            border-bottom: 1px solid $grey-10;
+            padding-bottom: $space-00;
+            margin-bottom: $space-03;
+        }
+
+        &-icon {
+            cursor: pointer;
+            transition: $transition;
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    &-collapsed-content {
+        text-overflow: ellipsis;
+        width: 100%;
+        margin: 0 $space-10;
+        color: darken($text-color, 20%);
+    }
+}
