@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import * as apis from './api';
-// import * as Screens from './screens';
-// import * as Comp from './components';
+import * as Screens from './screens';
+import * as Comp from './components';
 import { Spinner } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
+
+import './App.scss';
 
 function App() {
   const { loginWithRedirect, logout, user, getAccessTokenSilently } = useAuth0();
@@ -51,27 +53,28 @@ function App() {
 
   return (
     <div className="App">
+
       {user ? (
         dbUser ? (
-          <> 
-            {/* CONTENT (logged in) */}
-
-            {/* ------------------- */}
+          // LOGGED IN CONTENT
+          <>
+            
           </>
+          // ------------------
         ) : (
           <Container>
             <div className="text-center full d-flex flex-column justify-content-center align-items-center">
               <Spinner animation="border" variant="light" style={{height: 100, width: 100}} />
-              <h5 className="text-light mt-4">Please wait while we load your data...</h5>
+              <h5 className="text-light mt-4">Please wait...</h5>
             </div>
           </Container>
         )
       ) : (
-        <> 
-          {/* CONTENT (logged out) */}
-            
-          {/* -------------------- */}
+        // LOGGED OUT CONTENT
+        <>
+
         </>
+        // ------------------
       )}
     </div>
   );

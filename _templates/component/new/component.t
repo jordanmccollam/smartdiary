@@ -3,19 +3,33 @@ to: client/src/components/<%= name %>/<%= name %>.js
 unless_exists: true
 ---
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types'
+import classnames from "classnames"
 import { Row, Col } from 'react-bootstrap';
+
+import './_<%= h.changeCase.paramCase(name) %>.scss';
 
 const logger = "<%= name %>:: ";
 
 const <%= name %> = (props) => {
-  const { children, className } = props;
+  let classes = {
+		[`<%= h.changeCase.paramCase(name) %>`]: true
+	};
 
   return (
-    <div className={`${className} <%= h.changeCase.paramCase(name) %>`}>
+    <div className={`${props.className} ${classnames(classes)}`}>
     
-      {children}
+      {props.children}
     </div>
   )
+}
+
+<%= name %>.propTypes = {
+
+}
+
+<%= name %>.defaultProps = {
+
 }
 
 export default <%= name %>;

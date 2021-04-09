@@ -23,10 +23,11 @@ This is my personal template to start mern projects which will optimize as I lea
 - Axios
 
 ### General Setup
-- add .env files to gitignore
+- First things first, run `yarn` in root directory and then `cd client` and run `yarn` there too.
 - `yarn dev` - runs server and client locally
 - `yarn client` - runs client only
 - `yarn start` - runs server
+- `yarn storybook` - runs client storybook 
 
 ### Mongodb Setup
 - Create a mongodb database

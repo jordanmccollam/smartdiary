@@ -1,7 +1,8 @@
-@import "variables";
-@import "utils";
-@import "type";
-@import "ui";
+@import "./sass/variables";
+@import "./sass/utils";
+@import "./sass/type";
+@import "./sass/ui";
+@import "./sass/anim";
 @import "~bootstrap/scss/bootstrap";
 
 * {
@@ -14,5 +15,6 @@
   width: 100%;
   margin: 0px;
   padding: 0px;
-  overflow: auto;
 }
+
+

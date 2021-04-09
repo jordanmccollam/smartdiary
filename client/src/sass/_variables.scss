@@ -102,13 +102,9 @@ $grey-10: #BABABA;
 $grey-00: #EFEFEF;
 
 /*
- *  OTHER VARIABLES
- */
-$bg: #FFFFFF;
-
-/*
  *  BOOTSTRAP OVERRIDES
  */
+
 $primary: #197d67;
 $success: #197d67;
 $light: #f8f9fa;
@@ -116,6 +112,9 @@ $light: #f8f9fa;
 /*
  *  UI
  */
+$bg: #FFFFFF;
+$text-color: #000000;
+
 $radius: 3px;
 
 $font-primary: "Lato", sans-serif;
