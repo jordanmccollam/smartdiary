@@ -25,11 +25,15 @@ const <%= name %> = (props) => {
 }
 
 <%= name %>.propTypes = {
-
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
+  className: PropTypes.string
 }
 
 <%= name %>.defaultProps = {
-
+  className: ""
 }
 
 export default <%= name %>;

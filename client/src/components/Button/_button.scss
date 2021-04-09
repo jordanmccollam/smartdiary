@@ -1,0 +1,31 @@
+@import "../../sass/variables";
+
+.button {
+    width: max-content;
+    background-color: $primary;
+    padding: 5px 10px;
+    border-radius: $radius;
+    color: $alt-text-color;
+    transition: $transition;
+    cursor: pointer;
+    font-family: $font-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: darken($primary, 10%);
+    }
+
+    &-ghost {
+        background-color: $light;
+        color: $primary;
+        &:hover {
+            background-color: darken($light, 10%);
+        }
+    }
+
+    &-full {
+        width: 100%;
+    }
+}

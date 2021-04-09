@@ -105,21 +105,22 @@ $grey-00: #EFEFEF;
  *  BOOTSTRAP OVERRIDES
  */
 
-$primary: #197d67;
-$success: #197d67;
-$light: #f8f9fa;
+$primary: #004288;
+$light: #f1f2f5;
 
 /*
  *  UI
  */
-$bg: #FFFFFF;
-$text-color: #000000;
-
-$radius: 3px;
-
+$white: #FFFFFF;
+$bg: #f1f2f5;
+$text-color: #787b7f;
+$alt-text-color: $white;
+$transition: 0.2s;
+$radius: 15px;
+$border-color: #bcc0c3;
+$border: 1px solid #bcc0c3;
+$shadow-color: rgba(17, 38, 53, 0.25);
+$shadow: 3px 3px 5px $shadow-color;
+$shadow-hover: 3px 3px 16px rgba(0,0,0,0.05);
 $font-primary: "Lato", sans-serif;
 $font-secondary: "Lato", sans-serif;
-
-$shadow-color: rgba(0,0,0,0.3);
-$shadow: 2px 2px 5px $shadow-color;
-$shadow-hover: 3px 3px 16px rgba(0,0,0,0.05);
