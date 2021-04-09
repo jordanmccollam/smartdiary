@@ -1,0 +1,10 @@
+@import "../../sass/variables";
+
+.card {
+    background-color: $white;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    padding: $space-03;
+    font-family: $font-primary;
+    color: $text-color;
+}
