@@ -9,8 +9,8 @@ const logger = "Card:: ";
 
 const Card = (props) => {
   let classes = {
-		[`card`]: true,
-    [`card-darkMode`]: props.darkMode
+		[`custom-card`]: true,
+    [`custom-card-darkMode`]: props.darkMode
 	};
 
   return (

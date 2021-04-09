@@ -1,6 +1,6 @@
 @import "../../sass/variables";
 
-.card {
+.custom-card {
     background-color: $white;
     border-radius: $radius !important;
     box-shadow: $shadow;
@@ -8,7 +8,7 @@
     border: none !important;
 }
 
-.card.card-darkMode {
+.custom-card.custom-card-darkMode {
     background-color: $dark;
     box-shadow: $dark--shadow;
 }
