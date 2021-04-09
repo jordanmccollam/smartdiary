@@ -28,6 +28,18 @@
         text-overflow: ellipsis;
         width: 100%;
         margin: 0 $space-10;
-        color: darken($text-color, 20%);
+    }
+
+    &-collapsed-content,
+    &-expanded-content {
+        color: darken($text-color, 25%);
+    }
+
+    &-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: $space-05;
     }
 }

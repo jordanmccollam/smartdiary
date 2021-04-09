@@ -1,24 +1,36 @@
 @import "../../sass/variables";
 
 .button {
+    // min-width: 100px;
+
     width: max-content;
     background-color: $primary;
-    padding: 5px 10px;
+    padding: 5px 25px;
     border-radius: $radius;
-    color: $alt-text-color;
     transition: $transition;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $alt-text-color;
+    svg, path { color: $alt-text-color; margin-left: 3px; }
 
     &:hover {
         background-color: darken($primary, 10%);
     }
 
     &-ghost {
+        background-color: transparent;
+        color: $primary;
+        svg, path { color: $primary; }
+        &:hover {
+            background-color: $light;
+        }
+    }
+    &-faded {
         background-color: $light;
         color: $primary;
+        svg, path { color: $primary; }
         &:hover {
             background-color: darken($light, 10%);
         }

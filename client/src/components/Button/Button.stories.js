@@ -19,6 +19,10 @@ export const Ghost = Template.bind({})
 Ghost.args = {
   kind: 'ghost'
 }
+export const Faded = Template.bind({})
+Faded.args = {
+  kind: 'faded'
+}
 export const Full = Template.bind({})
 Full.args = {
   full: true

@@ -28,7 +28,7 @@ Button.propTypes = {
     PropTypes.element
   ]),
   className: PropTypes.string,
-  kind: PropTypes.oneOf(['primary', 'ghost']),
+  kind: PropTypes.oneOf(['primary', 'ghost', 'faded']),
   onClick: PropTypes.func,
   full: PropTypes.bool
 }
