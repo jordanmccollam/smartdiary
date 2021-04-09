@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+
+.line-graph {
+    width: max-content;
+
+    &-title {
+        color: $primary;
+        font-size: $text-02;
+        text-align: center;
+    }
+    &-energy-key {
+        color: $green-40;
+        svg, path {color: $green-40;}
+    }
+    &-pleasantness-key {
+        color: $primary;
+        svg, path {color: $primary;}
+    }
+}
