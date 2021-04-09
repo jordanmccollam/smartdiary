@@ -1,0 +1,10 @@
+@import "../../sass/variables";
+
+.welcome {
+    background: $bg;
+    height: 100vh;
+}
+
+.welcome.welcome-darkMode {
+    background: $dark--bg;
+}

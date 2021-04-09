@@ -72,7 +72,8 @@ function App() {
       ) : (
         // LOGGED OUT CONTENT
         <>
-          Hello world
+          {/* <Screens.Welcome darkMode={theme === 'theme--light' ? false : true} /> */}
+          <Screens.Diary darkMode={theme === 'theme--light' ? false : true} />
         </>
         // ------------------
       )}

@@ -2,13 +2,13 @@
 
 .card {
     background-color: $white;
-    border-radius: $radius;
+    border-radius: $radius !important;
     box-shadow: $shadow;
     padding: $space-03;
-    border: none;
+    border: none !important;
+}
 
-    &-darkMode {
-        background-color: $dark;
-        box-shadow: $dark--shadow;
-    }
+.card.card-darkMode {
+    background-color: $dark;
+    box-shadow: $dark--shadow;
 }

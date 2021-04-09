@@ -8,3 +8,41 @@
 *.theme--dark {
   color: $dark--text-color;
 }
+
+h1 {
+  font-family: $font-secondary;
+  color: $primary;
+  border-bottom: 1px solid $text-color;
+  position: relative;
+
+  .theme--dark & {
+    color: $dark--primary;
+    border-bottom: 1px solid $dark--text-color;
+  }
+
+  &::before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      bottom: -6px;
+      width: 100%;
+      border-bottom: 1px solid $primary;
+      transform: rotate(0.5deg);
+      z-index: 1;
+      .theme--dark & {
+          border-bottom: 1px solid $dark--primary;
+      }
+  }
+  &::after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      bottom: -5px;
+      width: 100%;
+      border-bottom: 1px solid $text-color;
+      transform: rotate(-0.3deg);
+      .theme--dark & {
+          border-bottom: 1px solid $dark--text-color;
+      }
+  }
+}
