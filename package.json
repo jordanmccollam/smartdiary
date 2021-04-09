@@ -1,10 +1,8 @@
 {
-  "name": "smartdiary",
+  "name": "mern-template",
   "version": "1.0.0",
+  "description": "mern-template",
   "main": "index.js",
-  "repository": "https://github.com/jordanmccollam/smartdiary.git",
-  "author": "<jordy.mccollam@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@auth0/auth0-react": "^1.3.0",
     "body-parser": "^1.19.0",
@@ -20,11 +18,22 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && yarn build",
     "install-client": "cd client && yarn",
     "heroku-postbuild": "yarn install-client && yarn build",
-    "start-dev": "concurrently \"node server.js\" \"cd client/ && yarn start\"",
-    "start": "node server.js",
-    "find": "sudo lsof -iTCP:8000 -sTCP:LISTEN"
-  }
+    "dev": "concurrently \"nodemon server.js\" \"cd client/ && yarn start\"",
+    "client": "cd client && yarn start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanmccollam/mern-template.git"
+  },
+  "author": "Jordan McCollam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordanmccollam/mern-template/issues"
+  },
+  "homepage": "https://github.com/jordanmccollam/mern-template#readme"
 }

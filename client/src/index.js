@@ -1,27 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import './styles/calendar.scss';
-import './styles/mood.scss';
-import './styles/theme.scss';
+import './App.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const audience = process.env.REACT_APP_AUDIENCE;
+// const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+// const audience = process.env.REACT_APP_AUDIENCE;
 
 ReactDOM.render(
-  <Auth0Provider
-    domain={domain}
-    clientId={clientId}
-    redirectUri={window.location.origin}
-    audience={audience}
-  >
+  // <Auth0Provider
+  //   domain={domain}
+  //   clientId={clientId}
+  //   redirectUri={window.location.origin}
+  //   // audience={audience}
+  // >
     <App />
-  </Auth0Provider>,
+  // </Auth0Provider>
+  ,
   document.getElementById('root')
 );
 

@@ -1,0 +1,29 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-v {
+  display: flex;
+  align-items: center;
+}
+
+.center-h {
+  display: flex;
+  justify-content: center;
+}
+
+.full {
+  height: 87.5vh;
+  overflow: auto;
+}
+
+.half {
+  height: 41.3vh;
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
