@@ -20,4 +20,10 @@ WithActions.args = {
   edit: () => console.log("Entry:: Edit"),
   delete: () => console.log("Entry:: Delete")
 }
+export const DarkMode = Template.bind({})
+DarkMode.args = {
+  edit: () => console.log("Entry:: Edit"),
+  delete: () => console.log("Entry:: Delete"),
+  darkMode: true
+}
 

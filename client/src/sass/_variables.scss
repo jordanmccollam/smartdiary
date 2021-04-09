@@ -126,3 +126,18 @@ $shadow: 3px 3px 5px $shadow-color;
 $shadow-hover: 3px 3px 16px rgba(0,0,0,0.05);
 $font-primary: "Lato", sans-serif;
 $font-secondary: 'Caveat', cursive;
+
+
+// DARK UI
+$dark: #343944;
+$dark--bg: #272c38;
+$dark--primary: #cb6d56;
+$dark--text-color: #bcc0c3;
+$dark--secondary: #bcc0c3;
+$dark--alt-text-color: $white;
+$dark--transition: 0.2s;
+$dark--radius: 15px;
+$dark--border: 1px solid #bcc0c3;
+$dark--shadow-color: #2b2f38;
+$dark--shadow: 3px 3px 5px $shadow-color;
+$dark--shadow-hover: 3px 3px 16px rgba(0,0,0,0.05);

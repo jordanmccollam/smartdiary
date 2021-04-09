@@ -9,7 +9,8 @@ const logger = "Card:: ";
 
 const Card = (props) => {
   let classes = {
-		[`card`]: true
+		[`card`]: true,
+    [`card-darkMode`]: props.darkMode
 	};
 
   return (
@@ -24,11 +25,13 @@ Card.propTypes = {
     PropTypes.string,
     PropTypes.element
   ]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  darkMode: PropTypes.bool
 }
 
 Card.defaultProps = {
-  className: ""
+  className: "",
+  darkMode: false
 }
 
 export default Card;

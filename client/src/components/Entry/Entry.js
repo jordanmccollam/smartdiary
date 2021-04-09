@@ -14,6 +14,7 @@ const Entry = (props) => {
   let classes = {
 		[`entry`]: true,
 		[`entry-expanded`]: expanded,
+    [`entry-darkMode`]: props.darkMode
 	};
 
   const toggleExpand = () => {
@@ -21,7 +22,7 @@ const Entry = (props) => {
   }
 
   return (
-    <Card className={`${props.className} ${classnames(classes)}`}>
+    <Card darkMode={props.darkMode} className={`${props.className} ${classnames(classes)}`}>
       <>
         <div className="entry-header">
           <div className="d-flex align-items-center">{props.time}<BsClock className="ml-1" /></div>
@@ -43,10 +44,10 @@ const Entry = (props) => {
 
             <div className="entry-actions">
               {props.edit && (
-                <Button kind="ghost" onClick={props.edit} ><> Edit <BsPencilSquare /> </></Button>
+                <Button kind="ghost" onClick={props.edit} darkMode={props.darkMode} ><> Edit <BsPencilSquare /> </></Button>
               )}
               {props.delete && (
-                <Button kind="ghost" onClick={props.delete} ><> Delete <BsTrash /> </></Button>
+                <Button kind="ghost" onClick={props.delete} darkMode={props.darkMode} ><> Delete <BsTrash /> </></Button>
               )}
             </div>
           </>
@@ -64,13 +65,15 @@ Entry.propTypes = {
   className: PropTypes.string,
   time: PropTypes.string,
   edit: PropTypes.func,
-  delete: PropTypes.func
+  delete: PropTypes.func,
+  darkMode: PropTypes.bool
 }
 
 Entry.defaultProps = {
   className: "",
   time: "0:00am",
-  children: "Entry Content Here"
+  children: "Entry Content Here",
+  darkMode: false
 }
 
 export default Entry;

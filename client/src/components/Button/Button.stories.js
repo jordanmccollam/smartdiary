@@ -28,3 +28,20 @@ Full.args = {
   full: true
 }
 
+// DARK MODE
+export const DarkModePrimary = Template.bind({})
+DarkModePrimary.args = {
+  kind: 'primary',
+  darkMode: true
+}
+export const DarkModeGhost = Template.bind({})
+DarkModeGhost.args = {
+  kind: 'ghost',
+  darkMode: true
+}
+export const DarkModeFaded = Template.bind({})
+DarkModeFaded.args = {
+  kind: 'faded',
+  darkMode: true
+}
+

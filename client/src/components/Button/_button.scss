@@ -39,4 +39,32 @@
     &-full {
         width: 100%;
     }
+
+
+    // ----- DARK MODE -----
+    &-darkMode {
+        background-color: $dark--primary;
+        color: $white;
+        svg, path { color: $dark--primary; }
+        &:hover {
+            background-color: darken($dark--primary, 10%);
+        }
+
+        &-ghost {
+            background-color: transparent;
+            color: $dark--primary;
+            svg, path { color: $dark--primary; }
+            &:hover {
+                background-color: $dark--bg;
+            }
+        }
+        &-faded {
+            background-color: $dark--bg;
+            color: $dark--primary;
+            svg, path { color: $dark--primary; }
+            &:hover {
+                background-color: darken($dark--bg, 10%);
+            }
+        }
+    }
 }

@@ -12,3 +12,9 @@
         svg, path {color: inherit;}
     }
 }
+
+.line-graph.line-graph-darkMode {
+    .line-graph-title {
+        color: $dark--primary;
+    }
+}

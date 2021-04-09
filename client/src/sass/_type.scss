@@ -4,3 +4,7 @@
   color: $text-color;
   font-weight: 300;
 }
+
+*.theme--dark {
+  color: $dark--text-color;
+}

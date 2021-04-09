@@ -6,4 +6,9 @@
     box-shadow: $shadow;
     padding: $space-03;
     border: none;
+
+    &-darkMode {
+        background-color: $dark;
+        box-shadow: $dark--shadow;
+    }
 }

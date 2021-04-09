@@ -14,7 +14,8 @@ const logger = "LineGraph:: ";
 
 const LineGraph = (props) => {
   let classes = {
-		[`line-graph`]: true
+		[`line-graph`]: true,
+    [`line-graph-darkMode`]: props.darkMode
 	};
 
   return (
@@ -22,7 +23,7 @@ const LineGraph = (props) => {
       <div className="line-graph-title">{props.title}</div>
 
       {props.data[0]?.keys.map((key, i) => (
-        <div className="line-graph-key" style={{color: props.theme === 'theme--light' ? key.lightColor : key.darkColor}}><BsDot/>{key.keyLabel}</div>
+        <div className="line-graph-key" style={{color: props.darkMode ? key.darkColor : key.lightColor}}><BsDot/>{key.keyLabel}</div>
       ))}
 
       <LineChart
@@ -42,7 +43,7 @@ const LineGraph = (props) => {
           <Tooltip />
           {/* <CartesianGrid stroke="#f5f5f5" /> */}
           {props.data[0]?.keys.map((key, i) => (
-            <Line type="monotone" dataKey={key.keyLabel} stroke={props.theme === 'theme--light' ? key.lightColor : key.darkColor} yAxisId={i} />
+            <Line type="monotone" dataKey={key.keyLabel} stroke={props.darkMode ? key.darkColor : key.lightColor} yAxisId={i} />
           ))}
       </LineChart>
     </div>
@@ -53,14 +54,14 @@ LineGraph.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   data: PropTypes.array,
-  theme: PropTypes.string
+  darkMode: PropTypes.bool
 }
 
 LineGraph.defaultProps = {
   className: "",
   title: "Line Graph",
   data: [],
-  theme: "theme--light"
+  darkMode: false
 }
 
 export default LineGraph;

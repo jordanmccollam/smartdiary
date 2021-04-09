@@ -10,7 +10,7 @@ import './App.scss';
 
 function App() {
   const { loginWithRedirect, logout, user, getAccessTokenSilently } = useAuth0();
-  const [ theme, setTheme ] = useState('theme--light');
+  const [ theme, setTheme ] = useState('theme--dark');
   const [ dbUser, setDbUser ] = useState(null);
   const [ token, setToken ] = useState(null);
 
@@ -52,7 +52,7 @@ function App() {
   // }
 
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
 
       {user ? (
         dbUser ? (
@@ -72,7 +72,7 @@ function App() {
       ) : (
         // LOGGED OUT CONTENT
         <>
-
+          Hello world
         </>
         // ------------------
       )}

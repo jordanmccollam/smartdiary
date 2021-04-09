@@ -11,7 +11,9 @@ const Button = (props) => {
   let classes = {
 		[`button`]: true,
     [`button-${props.kind}`]: true,
-    [`button-full`]: props.full
+    [`button-full`]: props.full,
+    [`button-darkMode`]: props.darkMode,
+    [`button-darkMode-${props.kind}`]: props.darkMode
 	};
 
   return (
@@ -30,7 +32,8 @@ Button.propTypes = {
   className: PropTypes.string,
   kind: PropTypes.oneOf(['primary', 'ghost', 'faded']),
   onClick: PropTypes.func,
-  full: PropTypes.bool
+  full: PropTypes.bool,
+  darkMode: PropTypes.bool
 }
 
 Button.defaultProps = {
@@ -38,7 +41,8 @@ Button.defaultProps = {
   children: "Default Button",
   kind: "primary",
   onClick: () => console.log(logger + 'onClick'),
-  full: false
+  full: false, 
+  darkMode: false
 }
 
 export default Button;
