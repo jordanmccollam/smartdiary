@@ -21,8 +21,9 @@ const LineGraph = (props) => {
     <div className={`${props.className} ${classnames(classes)}`}>
       <div className="line-graph-title">{props.title}</div>
 
-      <div className="line-graph-energy-key"><BsDot/> Energy</div>
-      <div className="line-graph-pleasantness-key"><BsDot/> Pleasantness</div>
+      {props.data[0]?.keys.map((key, i) => (
+        <div className="line-graph-key" style={{color: props.theme === 'theme--light' ? key.lightColor : key.darkColor}}><BsDot/>{key.keyLabel}</div>
+      ))}
 
       <LineChart
           width={300}
@@ -40,8 +41,9 @@ const LineGraph = (props) => {
           <XAxis dataKey="label" />
           <Tooltip />
           {/* <CartesianGrid stroke="#f5f5f5" /> */}
-          <Line type="monotone" dataKey="pleasantness" stroke={props.theme === 'theme--light' ? '#004288' : '#cb6d56'} yAxisId={0} />
-          <Line type="monotone" dataKey="energy" stroke="#308d45" yAxisId={1} />
+          {props.data[0]?.keys.map((key, i) => (
+            <Line type="monotone" dataKey={key.keyLabel} stroke={props.theme === 'theme--light' ? key.lightColor : key.darkColor} yAxisId={i} />
+          ))}
       </LineChart>
     </div>
   )

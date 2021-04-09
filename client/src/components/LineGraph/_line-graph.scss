@@ -8,12 +8,7 @@
         font-size: $text-02;
         text-align: center;
     }
-    &-energy-key {
-        color: $green-40;
-        svg, path {color: $green-40;}
-    }
-    &-pleasantness-key {
-        color: $primary;
-        svg, path {color: $primary;}
+    &-key {
+        svg, path {color: inherit;}
     }
 }
