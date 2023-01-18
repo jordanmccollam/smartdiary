@@ -22,7 +22,7 @@
   "scripts": {
     "build": "cd client && npm build",
     "install-client": "cd client && yarn",
-    "heroku-postbuild": "npm install-client && npm build",
+    "heroku-postbuild": "npm install-client && npm run build",
     "start-dev": "concurrently \"node server.js\" \"cd client/ && npm start\"",
     "start": "node server.js",
     "find": "sudo lsof -iTCP:8000 -sTCP:LISTEN"
