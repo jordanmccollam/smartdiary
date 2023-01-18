@@ -25,6 +25,9 @@
     "heroku-postbuild": "npm install-client && npm run build",
     "start-dev": "concurrently \"node server.js\" \"cd client/ && npm start\"",
     "start": "node server.js",
-    "find": "sudo lsof -iTCP:8000 -sTCP:LISTEN"
+    "find": "sudo lsof -iTCP:8000 -sTCP:LISTEN",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cd client && npm install"
+    
   }
 }
