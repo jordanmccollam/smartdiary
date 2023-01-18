@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', () => {
-    console.log("Mongoose is conntected!");
+    console.log("Mongoose is connected!");
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
