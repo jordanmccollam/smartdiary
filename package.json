@@ -20,14 +20,14 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm i",
-    "heroku-postbuild": "npm install-client && npm run build",
-    "start-dev": "concurrently \"node server.js\" \"cd client/ && npm start\"",
-    "start": "node server.js",
-    "find": "sudo lsof -iTCP:8000 -sTCP:LISTEN",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "cd client && npm install"
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && cd client && npm run build",
+    "install-client": "SET NODE_OPTIONS=--openssl-legacy-provider && cd client && npm i",
+    "heroku-postbuild": "SET NODE_OPTIONS=--openssl-legacy-provider && npm install-client && npm run build",
+    "start-dev": "SET NODE_OPTIONS=--openssl-legacy-provider && concurrently \"node server.js\" \"cd client/ && npm start\"",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && node server.js",
+    "find": "sSET NODE_OPTIONS=--openssl-legacy-provider && udo lsof -iTCP:8000 -sTCP:LISTEN",
+    "test": "SET NODE_OPTIONS=--openssl-legacy-provider && echo \"Error: no test specified\" && exit 1",
+    "install": "SET NODE_OPTIONS=--openssl-legacy-provider && cd client && npm install"
     
   }
 }
